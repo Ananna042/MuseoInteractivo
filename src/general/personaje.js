@@ -1,15 +1,15 @@
-export function crearUsuario(limites) {
+export function crearPersonaje(limites) {
   const usuario = document.createElement("div");
 
   usuario.classList.add("usuario");
 
-  let posicionX = 400;
+  let posicionX = 500;
   let posicionY = 250;
 
-  const velocidad = 5;
+  const velocidad = 10;
   const tamaño = 30;
 
-  function moverUsuario(tecla) {
+  function moverPersonaje(tecla) {
     if (tecla === "ArrowUp" || tecla === "w") {
       posicionY -= velocidad;
     }
@@ -25,31 +25,29 @@ export function crearUsuario(limites) {
     if (tecla === "ArrowRight" || tecla === "d") {
       posicionX += velocidad;
     }
-
     // Límites horizontales
-    if (posicionX < 0) {
-      posicionX = 0;
-    }
+if (posicionX < limites.izquierda) {
+  posicionX = limites.izquierda;
+}
+if (posicionX > limites.derecha - tamaño) {
+  posicionX = limites.derecha - tamaño;
+}
 
-    if (posicionX > limites.derecha - tamaño) {
-      posicionX = limites.derecha - tamaño;
-    }
+// Límites verticales
+if (posicionY < limites.arriba) {
+  posicionY = limites.arriba;
+}
+if (posicionY > limites.abajo - tamaño) {
+  posicionY = limites.abajo - tamaño;
+}
 
-    // Límites verticales
-    if (posicionY < 0) {
-      posicionY = 0;
-    }
-
-    if (posicionY > limites.abajo - tamaño) {
-      posicionY = limites.abajo - tamaño;
-    }
 
     usuario.style.left = `${posicionX}px`;
     usuario.style.top = `${posicionY}px`;
   }
 
   document.addEventListener("keydown", (evento) => {
-    moverUsuario(evento.key);
+    moverPersonaje(evento.key);
   });
 
   usuario.style.left = `${posicionX}px`;

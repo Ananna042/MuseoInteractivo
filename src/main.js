@@ -1,13 +1,13 @@
 import "./estilos/sala1.css";
 
-import { crearParedes } from "./assets/sala1/escenario/paredes.js";
-import { crearUsuario } from "./assets/sala1/personajes/usuario.js";
+import { crearParedes } from "./salas/sala1/paredes.js";
+import { crearPersonaje } from "./general/personaje.js";
 
 const app = document.querySelector("#app");
 
 const sala = crearParedes();
 
-const usuario = crearUsuario(sala.limites);
+const usuario = crearPersonaje(sala.limites);
 
 sala.appendChild(usuario);
 

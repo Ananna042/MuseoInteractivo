@@ -5,10 +5,10 @@ export function crearParedes() {
 
   // Medidas internas de la sala
   const limites = {
-    izquierda: 0,
-    arriba: 0,
-    derecha: 800,
-    abajo: 500,
+    izquierda: 15,
+    arriba: 15,
+    derecha: 1005,
+    abajo: 505
   };
 
   sala.limites = limites;
