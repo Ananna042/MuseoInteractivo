@@ -3,15 +3,21 @@ export function crearParedes() {
 
   sala.classList.add("sala");
 
-  // Medidas internas de la sala
   const limites = {
-    izquierda: 15,
-    arriba: 15,
-    derecha: 1005,
-    abajo: 505
+    izquierda: 45,
+    derecha: 1383,
+    arriba: 53,
+    abajo: 506,
   };
 
+  const obstaculos = [
+    { x: 0, y: 0, ancho: 1400, alto: 100 },
+  ];
+
   sala.limites = limites;
+  sala.obstaculos = obstaculos;
+
+  
 
   return sala;
 }

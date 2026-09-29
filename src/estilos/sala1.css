@@ -19,20 +19,20 @@ body {
 /* =========================
    SALA
 ========================= */
-
 .sala {
   position: relative;
-
-  width: 1000px;
+  width: 1400px;
   height: 500px;
+  border: 5px solid rgb(247, 245, 245);
 
-  border: 5px solid white;
+  background-image: url('/primerobra.png'), url('/paredsegunda.png'), url('/pared.png'), url('/suelo.png');
+  background-position: 100px 25px, 245px 245px, -45px top, top left;
+  background-size: 41px 55px, 687px 100px, 1400px 100px, cover;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 
-  background-color: #d8c9b0;
-
+  image-rendering: pixelated;
   overflow: hidden;
 }
-
 /* =========================
    USUARIO
 ========================= */
@@ -40,13 +40,11 @@ body {
 .usuario {
   position: absolute;
 
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 90px;
 
-  background-color: red;
-
-  left: 50%;
-  top: 50%;
+  left: 90%;
+  top: 10%;
 
   transform: translate(-50%, -50%);
 }
