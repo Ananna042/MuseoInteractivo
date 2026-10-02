@@ -22,13 +22,42 @@ body {
 .sala {
   position: relative;
   width: 1400px;
-  height: 500px;
-  border: 5px solid rgb(247, 245, 245);
+  height: 608px;
 
-  background-image: url('/primerobra.png'), url('/paredsegunda.png'), url('/pared.png'), url('/suelo.png');
-  background-position: 100px 25px, 245px 245px, -45px top, top left;
-  background-size: 41px 55px, 687px 100px, 1400px 100px, cover;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-image:
+    url('/primerobra.png'),
+    url('/segundaobra.png'),
+    url('/terceraobra.png'),
+    url('/cuartaobra.png'),
+    url('/quintaobra.png'),
+    url('/sextaobra.png'),
+    url('/paredsegunda.png'),
+    url('/pared.png'),
+    url('/suelo.png');
+
+  background-position:
+    100px 10px,
+    225px 10px,
+    403px 10px,
+    524px 10px,
+    752px 10px,
+    964px 10px,
+    245px 245px,
+    -45px top,
+    top left;
+
+  background-size:
+    95px 125px,
+    148px 125px,
+    91px 125px,
+    201px 125px,
+    182px 125px,
+    193px 125px,
+    687px 120px,
+    1415px 160px,
+    cover;
+
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
   image-rendering: pixelated;
   overflow: hidden;
@@ -48,3 +77,4 @@ body {
 
   transform: translate(-50%, -50%);
 }
+

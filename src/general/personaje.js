@@ -138,5 +138,14 @@ export function crearPersonaje(limites, obstaculos = []) {
   actualizarPosicionVisual();
   ponerIdle();
 
+
+
+  usuario.obtenerPosicion = () => {
+    return {
+      x: posicionX,
+      y: posicionY
+    };
+  };
+
   return usuario;
 }

@@ -4,14 +4,14 @@ export function crearParedes() {
   sala.classList.add("sala");
 
   const limites = {
-    izquierda: 45,
-    derecha: 1383,
+    izquierda: 40,
+    derecha: 1395,
     arriba: 53,
-    abajo: 506,
+    abajo: 622,
   };
 
   const obstaculos = [
-    { x: 0, y: 0, ancho: 1400, alto: 100 },
+    { x: 0, y: 0, ancho: 1400, alto: 150 },
   ];
 
   sala.limites = limites;
