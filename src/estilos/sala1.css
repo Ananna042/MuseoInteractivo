@@ -37,6 +37,7 @@ body {
     url('/paredcuarta.png'),
     url('/paredtercera.png'),
     url('/segundalineavertical.png'),
+    url('/esculturauno.png'),
     url('/pared.png'),
     url('/suelo.png');
 
@@ -52,7 +53,7 @@ body {
     1056px 245px,
     816px 365px,
     1036px 245px,
-
+    400px 370px,
     -45px top,
     top left;
 
@@ -68,10 +69,11 @@ body {
     310px 120px,
     220px 120px,
     20px 240px,
+    125px 100px,
     1415px 160px,
     cover;
 
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
   image-rendering: pixelated;
   overflow: hidden;
