@@ -5,6 +5,7 @@
 body {
   margin: 0;
   background-color: #222;
+  font-family: "Pixelify Sans", sans-serif;
 }
 
 #app {
@@ -31,7 +32,11 @@ body {
     url('/cuartaobra.png'),
     url('/quintaobra.png'),
     url('/sextaobra.png'),
+    url('/lineavertical.png'),
     url('/paredsegunda.png'),
+    url('/paredcuarta.png'),
+    url('/paredtercera.png'),
+    url('/segundalineavertical.png'),
     url('/pared.png'),
     url('/suelo.png');
 
@@ -42,7 +47,12 @@ body {
     524px 10px,
     752px 10px,
     964px 10px,
-    245px 245px,
+    0px -55px,
+    0px 245px,
+    1056px 245px,
+    816px 365px,
+    1036px 245px,
+
     -45px top,
     top left;
 
@@ -53,15 +63,20 @@ body {
     201px 125px,
     182px 125px,
     193px 125px,
-    687px 120px,
+    20px 300px,
+    550px 120px,
+    310px 120px,
+    220px 120px,
+    20px 240px,
     1415px 160px,
     cover;
 
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
 
   image-rendering: pixelated;
   overflow: hidden;
 }
+
 /* =========================
    USUARIO
 ========================= */
@@ -77,4 +92,242 @@ body {
 
   transform: translate(-50%, -50%);
 }
+  
 
+/* =========================
+   DISEÑO ZOOM DE CADA OBRA
+========================= */
+
+
+.tecla {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid white;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  font-family: "Pixelify Sans", monospace;
+}
+
+.prompt-interaccion {
+  position: absolute;
+  transform: translate(-50%, 0);
+  display: none;
+  z-index: 10;
+  animation: flotar 1s ease-in-out infinite alternate;
+}
+
+@keyframes flotar {
+  from { margin-top: 0px; }
+  to { margin-top: -6px; }
+}
+
+
+.overlay-obra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease-out;
+}
+
+.overlay-obra.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.panel-obra {
+  background: rgb(34, 34, 34);
+  border-radius: 8px;
+  width: 63vw;
+  height: 63vh;
+  transform: scale(0);
+  transition: transform 0.35s ease-out;
+  display: flex;
+  overflow: hidden;
+}
+
+.overlay-obra.activo .panel-obra {
+  transform: scale(1);
+}
+
+
+.volver-aviso {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Pixelify Sans", monospace;
+  color: #fff;
+  font-size: 14px;
+}
+
+.panel-imagen-contenedor {
+  width: 45%;
+  height: 100%;
+  flex-shrink: 0;
+  background: rgb(34, 34, 34);
+}
+
+.panel-imagen-contenedor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+
+.panel-info {
+  flex: 1;
+  padding: 48px 22px 22px 14px;
+  overflow-y: auto;
+  color: #ffffff;
+  font-family: "Pixelify Sans", monospace;
+
+}
+
+.panel-info h2 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+}
+
+.panel-info .autor {
+  color: #ffffff;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.panel-fila {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.panel-fila .etiqueta {
+  font-weight: bold;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+.npc {
+  position: absolute;
+  image-rendering: pixelated;
+}
+  
+
+
+
+
+
+
+
+.checklist {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: rgba(122, 122, 122, 0.55);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  min-width: 210px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: "Pixelify Sans", sans-serif;
+  z-index: 40;
+}
+
+.checklist-titulo {
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 2px;
+}
+
+.check-circulo {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.check-circulo svg {
+  width: 11px;
+  height: 11px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+}
+
+.check-circulo path {
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.checklist-item.completado .check-circulo {
+  background-color: #4caf6a;
+  border-color: #4caf6a;
+  transform: scale(1.1);
+}
+
+.checklist-item.completado .check-circulo svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.checklist-texto {
+  position: relative;
+  font-size: 14px;
+}
+
+.checklist-texto::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 0%;
+  background: rgba(255,255,255,0.8);
+  transition: width 0.35s ease;
+}
+
+.checklist-item.completado .checklist-texto {
+  opacity: 0.55;
+}
+
+.checklist-item.completado .checklist-texto::after {
+  width: 100%;
+}

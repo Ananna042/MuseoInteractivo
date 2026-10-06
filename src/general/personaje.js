@@ -3,7 +3,7 @@ export function crearPersonaje(limites, obstaculos = []) {
   usuario.classList.add("usuario");
 
   let posicionX = 1100;
-  let posicionY = 250;
+  let posicionY = 200;
 
   const velocidad = 10;
 
