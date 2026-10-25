@@ -1,4 +1,4 @@
-export function crearNPC(limites, obstaculos = []) {
+export function crearNPC(limites, obstaculos = [], obtenerOtros = () => []) {
   const npc = document.createElement("div");
   npc.classList.add("npc");
 
@@ -8,6 +8,9 @@ export function crearNPC(limites, obstaculos = []) {
   const velocidad = 2;
 
   const tamaño = 30;
+
+  // Obstáculos fijos + cajas de otras entidades (el jugador)
+  const todos = () => obstaculos.concat(obtenerOtros());
   const TAMAÑO_VISUAL = 70;
   const OFFSET_VISUAL = (TAMAÑO_VISUAL - tamaño) / 2;
 
@@ -73,7 +76,7 @@ export function crearNPC(limites, obstaculos = []) {
 
     const caja = { x: nuevaX, y: nuevaY, ancho: tamaño, alto: tamaño };
 
-    for (const obs of obstaculos) {
+    for (const obs of todos()) {
       if (hayColision(caja, obs)) {
         return false;
       }
@@ -100,7 +103,7 @@ export function crearNPC(limites, obstaculos = []) {
     nuevaY = Math.max(limites.arriba, Math.min(nuevaY, limites.abajo - tamaño));
 
     const caja = { x: nuevaX, y: nuevaY, ancho: tamaño, alto: tamaño };
-    return !obstaculos.some(obs => hayColision(caja, obs));
+    return !todos().some(obs => hayColision(caja, obs));
   }
 
   function direccionLibre(direccion) {

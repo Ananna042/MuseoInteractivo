@@ -8,53 +8,117 @@ body {
   font-family: "Pixelify Sans", sans-serif;
 }
 
+html, body {
+  margin: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
 #app {
   width: 100vw;
   height: 100vh;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;   /* antes: center */
   align-items: center;
 }
+
+/* =========================
+   MUNDO (zona ampliada + sala)
+========================= */
+.mundo {
+  position: relative;
+  height: 603px;
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.ampliacion {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 603px;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.tramo {
+  position: relative;
+  width: 1400px;
+  height: 603px;
+  flex-shrink: 0;
+
+  background-image:
+    url('/segundapared.png'),
+    url('/suelo.png');
+  background-repeat: repeat-x, no-repeat;
+  background-position: left top, top left;
+  background-size: 472px 160px, cover;
+
+  image-rendering: pixelated;
+}
+
+.tramo.espejo {
+  transform: scaleX(-1);
+}
+
 
 /* =========================
    SALA
 ========================= */
 .sala {
-  position: relative;
+  --pared-y: 303px;   /* altura de las paredes nuevas */
+
+  position: absolute; top: 0;
   width: 1400px;
-  height: 608px;
+  height: 603px;
+  flex-shrink: 0;
 
   background-image:
+    /* pared de arriba */
     url('/primerobra.png'),
     url('/segundaobra.png'),
     url('/terceraobra.png'),
     url('/cuartaobra.png'),
     url('/quintaobra.png'),
     url('/sextaobra.png'),
-    url('/lineavertical.png'),
-    url('/paredsegunda.png'),
-    url('/paredcuarta.png'),
-    url('/paredtercera.png'),
-    url('/segundalineavertical.png'),
-    url('/esculturauno.png'),
-    url('/pared.png'),
+    url('/septimaobra.png'),
+
+    /* pared de abajo izquierda */
+    url('/octavaobra.png'),
+    url('/obra11.png'),
+
+    /* pared de abajo derecha */
+    url('/decimaobra.png'),
+    url('/novenaobra.png'),
+
+    url('/segundapared.png'),   /* nueva, izquierda */
+    url('/segundapared.png'),   /* nueva, derecha */
+    url('/pared.png'),          /* la de arriba */
     url('/suelo.png');
 
   background-position:
-    100px 10px,
-    225px 10px,
-    403px 10px,
-    524px 10px,
+    /* pared de arriba (separación pareja de 43.5px) */
+    44px 10px,
+    182px 10px,
+    374px 10px,
+    508px 10px,
     752px 10px,
-    964px 10px,
-    0px -55px,
-    0px 245px,
-    1056px 245px,
-    816px 365px,
-    1036px 245px,
-    400px 370px,
-    -45px top,
+    978px 10px,
+    1214px 10px,
+
+    /* pared de abajo izquierda */
+    38px calc(var(--pared-y) + 10px),
+    220px calc(var(--pared-y) + 10px),
+
+    /* pared de abajo derecha */
+    969px calc(var(--pared-y) + 10px),
+    1211px calc(var(--pared-y) + 10px),
+
+    left 0 top var(--pared-y),
+    right 0 top var(--pared-y),
+    -35px top,
     top left;
 
   background-size:
@@ -64,37 +128,99 @@ body {
     201px 125px,
     182px 125px,
     193px 125px,
-    20px 300px,
-    550px 120px,
-    310px 120px,
-    220px 120px,
-    20px 240px,
-    125px 100px,
-    1415px 160px,
+    142px 125px,
+
+    143px 125px,
+    214px 125px,
+
+    201px 125px,
+    148px 125px,
+
+    472px 160px,
+    472px 160px,
+    1445px 160px,
     cover;
 
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-repeat: no-repeat;
 
   image-rendering: pixelated;
-  overflow: hidden;
+  overflow: visible;
 }
+
+
+
+/* =========================
+   OBRAS 12-23 (a la izquierda de primerobra.png)
+   separación pareja de 43.5px, 125px de alto, y=10px
+   la última (obra23) termina a 43.5px de primerobra
+========================= */
+.sala::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2240px;
+  width: 2240px;
+  height: 603px;
+  pointer-events: none;
+ 
+  background-image:
+    url('/obra12.png'),
+    url('/obra13.png'),
+    url('/obra14.png'),
+    url('/obra15.png'),
+    url('/obra16.png'),
+    url('/obra17.png'),
+    url('/obra18.png'),
+    url('/obra19.png'),
+    url('/obra20.png'),
+    url('/obra21.png'),
+    url('/obra22.png'),
+    url('/obra23.png');
+ 
+  background-position:
+    96px 10px,
+    284px 10px,
+    418px 10px,
+    566px 10px,
+    785px 10px,
+    988px 10px,
+    1157px 10px,
+    1366px 10px,
+    1517px 10px,
+    1722px 10px,
+    1961px 10px,
+    2102px 10px;
+ 
+  background-size:
+    144px 125px,
+    91px 125px,
+    104px 125px,
+    176px 125px,
+    160px 125px,
+    125px 125px,
+    166px 125px,
+    107px 125px,
+    162px 125px,
+    195px 125px,
+    98px 125px,
+    138px 125px;
+ 
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+ 
+
+
+
 
 /* =========================
    USUARIO
 ========================= */
 
-.usuario {
+.usuario,
+.npc {
   position: absolute;
-
-  width: 50px;
-  height: 90px;
-
-  left: 90%;
-  top: 10%;
-
-  transform: translate(-50%, -50%);
 }
-  
 
 /* =========================
    DISEÑO ZOOM DE CADA OBRA
@@ -234,7 +360,16 @@ body {
 }
   
 
-
+.panel-sin-imagen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Pixelify Sans", monospace;
+  font-size: 14px;
+}
 
 
 
@@ -242,7 +377,7 @@ body {
 
 .checklist {
   position: fixed;
-  top: 16px;
+  top: 8px;
   right: 16px;
   background: rgba(122, 122, 122, 0.55);
   backdrop-filter: blur(2px);

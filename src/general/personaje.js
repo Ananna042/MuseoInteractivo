@@ -1,4 +1,4 @@
-export function crearPersonaje(limites, obstaculos = []) {
+export function crearPersonaje(limites, obstaculos = [], obtenerOtros = () => []) {
   const usuario = document.createElement("div");
   usuario.classList.add("usuario");
 
@@ -9,6 +9,9 @@ export function crearPersonaje(limites, obstaculos = []) {
 
   // Caja REAL de colisión
   const tamaño = 30;
+
+  // Obstáculos fijos + cajas de otras entidades (el NPC)
+  const todos = () => obstaculos.concat(obtenerOtros());
 
   // Tamaño VISUAL del personaje
   const TAMAÑO_VISUAL = 70;
@@ -83,7 +86,7 @@ export function crearPersonaje(limites, obstaculos = []) {
 
     let caja = { x: nuevaX, y: nuevaY, ancho: tamaño, alto: tamaño };
 
-    for (const obs of obstaculos) {
+    for (const obs of todos()) {
       if (hayColision(caja, obs)) {
         if (eje === "x") {
           // si me muevo hacia la derecha, encajo justo a la izquierda del obstáculo
