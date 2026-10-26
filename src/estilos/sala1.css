@@ -27,6 +27,8 @@ html, body {
    MUNDO (zona ampliada + sala)
 ========================= */
 .mundo {
+
+  --pared-y: 303px;   /* altura de las paredes nuevas */
   position: relative;
   height: 603px;
   flex-shrink: 0;
@@ -64,11 +66,67 @@ html, body {
 }
 
 
+.tramo:first-child {
+  background-image:
+    /* pared de arriba (obras 24, 25, 26 y 31) */
+    url('/obra24.png'),
+    url('/obra25.png'),
+    url('/obra26.png'),
+    url('/obra31.png'),
+
+    /* pared del medio (obras 27 a 30) */
+    url('/obra27.png'),
+    url('/obra28.png'),
+    url('/obra29.png'),
+    url('/obra30.png'),
+
+    url('/tercerapared.png'),
+    url('/segundapared.png'),
+    url('/suelo.png');
+
+  background-repeat:
+    no-repeat, no-repeat, no-repeat, no-repeat,
+    no-repeat, no-repeat, no-repeat, no-repeat,
+    no-repeat, repeat-x, no-repeat;
+
+  background-position:
+    /* pared de arriba (separación de 44px) */
+    44px 10px,
+    188px 10px,
+    329px 10px,
+    518px 10px,
+
+    /* pared del medio (separación de 46px) */
+    275px calc(var(--pared-y) + 10px),
+    516px calc(var(--pared-y) + 10px),
+    715px calc(var(--pared-y) + 10px),
+    927px calc(var(--pared-y) + 10px),
+
+    center var(--pared-y),
+    left top,
+    top left;
+
+  background-size:
+    100px 125px,
+    97px 125px,
+    145px 125px,
+    94px 125px,
+
+    195px 125px,
+    153px 125px,
+    166px 125px,
+    198px 125px,
+
+    943px 160px,
+    472px 160px,
+    cover;
+}
+
+
 /* =========================
    SALA
 ========================= */
 .sala {
-  --pared-y: 303px;   /* altura de las paredes nuevas */
 
   position: absolute; top: 0;
   width: 1400px;
@@ -211,7 +269,39 @@ html, body {
  
 
 
+/* =========================
+   BANCAS (pantalla 2, la del medio)
+   3 bancas de 260px, huecos parejos de 155px
+========================= */
+.sala::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -1400px;      /* pantalla del medio */
+  width: 1400px;
+  height: 603px;
+  pointer-events: none;
 
+  background-image:
+    url('/banca.png'),
+    url('/banca.png'),
+    url('/banca.png');
+
+
+  background-position:
+    192px 210px,
+    595px 210px,
+    998px 210px;
+
+
+  background-size:
+    210px 100px,
+    210px 100px,
+    210px 100px;
+
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
 
 /* =========================
    USUARIO

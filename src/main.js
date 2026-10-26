@@ -5,9 +5,16 @@ import { crearPersonaje } from "./general/personaje.js";
 import { iniciarObras } from "./salas/sala1/obras.js";
 import { crearNPC } from "./salas/sala1/npcs.js";
 import { crearChecklist } from "./salas/sala1/mision.js"; // ajustá la ruta a donde lo tengas
+import { crearMusicos } from "./salas/sala1/musicos.js";
 
 const app = document.querySelector("#app");
 const sala = crearParedes();
+
+
+// justo después de: const sala = crearParedes();
+const musicos = crearMusicos();
+musicos.elementos.forEach(m => sala.appendChild(m));
+sala.obstaculos.push(...musicos.obstaculos);
 
 // Caja de colisión de otra entidad (mismo tamaño que `tamaño` en personaje.js / npcs.js)
 const MARGEN_X = 15;
