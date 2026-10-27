@@ -109,6 +109,3 @@ document.addEventListener("keydown", () => {
     .catch(error => console.error("ERROR DE AUDIO:", error));
 }, { once: true });
 
-
-window.usuario = usuario;
-window.npc = npc;

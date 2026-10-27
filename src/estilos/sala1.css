@@ -134,6 +134,13 @@ html, body {
   flex-shrink: 0;
 
   background-image:
+
+/* esculturas (arriba de todo) */
+    url('/escultura2.png'),
+    url('/escultura3.png'),
+
+
+
     /* pared de arriba */
     url('/primerobra.png'),
     url('/segundaobra.png'),
@@ -157,6 +164,12 @@ html, body {
     url('/suelo.png');
 
   background-position:
+    
+   /* esculturas: triángulo */
+    650px 200px,   /* escultura2: abajo izquierda */
+    650px 390px,   /* escultura3: abajo derecha, al lado de la 2 */
+
+
     /* pared de arriba (separación pareja de 43.5px) */
     44px 10px,
     182px 10px,
@@ -180,6 +193,12 @@ html, body {
     top left;
 
   background-size:
+
+    auto 130px,
+    auto 130px,
+
+
+
     95px 125px,
     148px 125px,
     91px 125px,
@@ -204,7 +223,6 @@ html, body {
   image-rendering: pixelated;
   overflow: visible;
 }
-
 
 
 /* =========================

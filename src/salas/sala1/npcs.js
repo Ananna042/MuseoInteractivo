@@ -1,15 +1,21 @@
-export function crearNPC(limites, obstaculos = [], obtenerOtros = () => []) {
+export function crearNPC(limites, obstaculos = [], obtenerOtros = () => [], opciones = {}) {
+  const {
+    imagen = "/npcuno.png",
+    x = 700,
+    y = 350,
+  } = opciones;
+
   const npc = document.createElement("div");
   npc.classList.add("npc");
 
-  let posicionX = 700;
-  let posicionY = 350;
+  let posicionX = x;
+  let posicionY = y;
 
   const velocidad = 2;
 
   const tamaño = 30;
 
-  // Obstáculos fijos + cajas de otras entidades (el jugador)
+  // Obstáculos fijos + cajas de otras entidades (el jugador y el otro NPC)
   const todos = () => obstaculos.concat(obtenerOtros());
   const TAMAÑO_VISUAL = 70;
   const OFFSET_VISUAL = (TAMAÑO_VISUAL - tamaño) / 2;
@@ -26,7 +32,7 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => []) {
   let frameCaminataIndex = 0;
   let ultimoCambioFrame = 0;
 
-  npc.style.backgroundImage = "url('/npcuno.png')";
+  npc.style.backgroundImage = `url('${imagen}')`;
   npc.style.width = `${TAMAÑO_VISUAL}px`;
   npc.style.height = `${TAMAÑO_VISUAL}px`;
   npc.style.backgroundSize = `${CELDA * 3 * ESCALA}px ${CELDA * 4 * ESCALA}px`;
@@ -173,6 +179,9 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => []) {
   requestAnimationFrame(loop);
 
   npc.obtenerPosicion = () => ({ x: posicionX, y: posicionY });
+
+  // Caja de colisión, para que otros NPC (y el jugador) lo esquiven
+  npc.obtenerCaja = () => ({ x: posicionX, y: posicionY, ancho: tamaño, alto: tamaño });
 
   return npc;
 }
