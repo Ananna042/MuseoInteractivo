@@ -85,6 +85,40 @@ export function crearParedes() {
     }),
   ];
 
+
+
+  // ===== Esculturas nuevas (las 6 del piso ampliado) =====
+  // Tienen que coincidir con .sala::before en el CSS
+  const ESC_OFFSET_X = 2240;       // = left: -2240px
+  const ESC_Y = 350;               // = --esc-y
+  const ESC_ANCHO = 100.8;         // = --esc-ancho
+  const ESC_ALTO_NUEVO = 132;      // = --esc-alto
+
+  function colisionNueva({ cssX, cssY, ancho, alto, recorteLado = 20, recorteArriba = 5 }) {
+    return {
+      x: Math.round(cssX - ESC_OFFSET_X + recorteLado - MARGEN_ESC),
+      y: Math.round(cssY + recorteArriba - MARGEN_ESC),
+      ancho: Math.round(ancho - recorteLado * 2 + MARGEN_ESC * 2),
+      alto: Math.round(alto - recorteArriba + MARGEN_ESC),
+    };
+  }
+
+  const esculturasNuevas = [
+    // pantalla del medio
+    colisionNueva({ cssX: 1680, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura4 (el beso)
+    colisionNueva({ cssX: 1835, cssY: ESC_Y + 35, ancho: 150,       alto: 150 }),            // escultura1 (al medio)
+    colisionNueva({ cssX: 2042, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura5
+
+    // tercera pantalla
+    colisionNueva({ cssX: 715,  cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura6
+    colisionNueva({ cssX: 865,  cssY: ESC_Y,      ancho: 170,       alto: 190 }),            // escultura8 (al medio)
+    colisionNueva({ cssX: 1081, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura7
+  ];
+
+
+
+
+
   const obstaculos = [
     // pared de arriba: ahora recorre todo el mapa, ampliación incluida
     { x: -AMPLIACION, y: 0, ancho: SALA_ANCHO + AMPLIACION, alto: 120 },
@@ -115,6 +149,7 @@ export function crearParedes() {
 
     ...bancas,
     ...esculturas,
+    ...esculturasNuevas
   ];
 
   sala.limites = limites;

@@ -230,6 +230,7 @@ html, body {
    separación pareja de 43.5px, 125px de alto, y=10px
    la última (obra23) termina a 43.5px de primerobra
 ========================= */
+
 .sala::before {
   content: "";
   position: absolute;
@@ -238,8 +239,23 @@ html, body {
   width: 2240px;
   height: 603px;
   pointer-events: none;
- 
+
+  /* ajustes de las esculturas (se cambian acá y listo) */
+  --esc-y: 350px;          /* altura de la fila */
+  --esc-ancho: 100.8px;    /* 132px de alto × 84/110 */
+  --esc-alto: 132px;
+
   background-image:
+    /* esculturas: fila derecha (4 - 1 - 5) */
+    url('/escultura4.png'),
+    url('/escultura1.png'),
+    url('/escultura5.png'),
+
+    /* esculturas: fila izquierda del piano (6 - 8 - 7) */
+    url('/escultura6.png'),
+    url('/escultura8.png'),
+    url('/escultura7.png'),
+
     url('/obra12.png'),
     url('/obra13.png'),
     url('/obra14.png'),
@@ -252,8 +268,16 @@ html, body {
     url('/obra21.png'),
     url('/obra22.png'),
     url('/obra23.png');
- 
+
   background-position:
+    1680px var(--esc-y),    /* escultura4 (el beso) */
+    1835px calc(var(--esc-y) + 35px),    /* escultura1 (al medio) */
+    2042px var(--esc-y),    /* escultura5 */
+
+    715px var(--esc-y),     /* escultura6 */
+    865px var(--esc-y),     /* escultura8 (al medio) */
+    1081px var(--esc-y),    /* escultura7 */
+
     96px 10px,
     284px 10px,
     418px 10px,
@@ -266,8 +290,16 @@ html, body {
     1722px 10px,
     1961px 10px,
     2102px 10px;
- 
+
   background-size:
+    var(--esc-ancho) var(--esc-alto),
+    150px 150px,                      /* escultura1: ancho alto */
+    var(--esc-ancho) var(--esc-alto),
+
+    var(--esc-ancho) var(--esc-alto),
+    170px 190px,                      /* escultura1: ancho alto */
+    var(--esc-ancho) var(--esc-alto),
+
     144px 125px,
     91px 125px,
     104px 125px,
@@ -280,11 +312,11 @@ html, body {
     195px 125px,
     98px 125px,
     138px 125px;
- 
+
   background-repeat: no-repeat;
   image-rendering: pixelated;
 }
- 
+
 
 
 /* =========================

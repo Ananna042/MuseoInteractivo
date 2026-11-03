@@ -15,7 +15,7 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => [], opci
 
   const tamaño = 30;
 
-  // Obstáculos fijos + cajas de otras entidades (el jugador y el otro NPC)
+  // Obstáculos fijos + cajas de otras entidades (el jugador y los otros NPC)
   const todos = () => obstaculos.concat(obtenerOtros());
   const TAMAÑO_VISUAL = 70;
   const OFFSET_VISUAL = (TAMAÑO_VISUAL - tamaño) / 2;

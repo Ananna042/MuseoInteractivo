@@ -4,14 +4,12 @@ import { crearParedes, AMPLIACION } from "./salas/sala1/paredes.js";
 import { crearPersonaje } from "./general/personaje.js";
 import { iniciarObras } from "./salas/sala1/obras.js";
 import { crearNPC } from "./salas/sala1/npcs.js";
-import { crearChecklist } from "./salas/sala1/mision.js"; // ajustá la ruta a donde lo tengas
+import { crearChecklist } from "./salas/sala1/mision.js";
 import { crearMusicos } from "./salas/sala1/musicos.js";
 
 const app = document.querySelector("#app");
 const sala = crearParedes();
 
-
-// justo después de: const sala = crearParedes();
 const musicos = crearMusicos();
 musicos.elementos.forEach(m => sala.appendChild(m));
 sala.obstaculos.push(...musicos.obstaculos);
@@ -30,12 +28,51 @@ const caja = (e) => {
   };
 };
 
-// Cada uno ve al otro como un obstáculo (no se empujan, simplemente no se atraviesan)
-const usuario = crearPersonaje(sala.limites, sala.obstaculos, () => [caja(npc)]);
-const npc = crearNPC(sala.limites, sala.obstaculos, () => [caja(usuario)]);
+const choca = (a, b) =>
+  a.x < b.x + b.ancho && a.x + a.ancho > b.x &&
+  a.y < b.y + b.alto && a.y + a.alto > b.y;
+
+// =========================
+// JUGADOR + NPCs
+// =========================
+const IMAGENES_NPCS = [
+  "/npcuno.png", "/npcdos.png", "/npctres.png", "/npccuatro.png",
+  "/npccinco.png", "/npcseis.png", "/npcsiete.png", "/npcocho.png",
+];
+
+const npcs = [];
+const usuario = crearPersonaje(sala.limites, sala.obstaculos, () => npcs.map(caja));
+
+// Punto random libre: fuera de obstáculos, del jugador y de otros NPC
+function posicionAleatoria() {
+  const { izquierda, derecha, arriba, abajo } = sala.limites;
+  const ocupados = [...sala.obstaculos, ...npcs.map(caja), caja(usuario)];
+
+  for (let i = 0; i < 500; i++) {
+    const x = izquierda + Math.random() * (derecha - 30 - izquierda);
+    const y = arriba + Math.random() * (abajo - 30 - arriba);
+    const prueba = { x: x - MARGEN_X, y: y - MARGEN_Y, ancho: 60, alto: 60 };
+    if (!ocupados.some(o => choca(prueba, o))) return { x: Math.round(x), y: Math.round(y) };
+  }
+  return { x: 700, y: 350 };
+}
+
+IMAGENES_NPCS.forEach((imagen) => {
+  const { x, y } = posicionAleatoria();
+
+  let npc = null; // tiene que ser let: crearNPC llama al callback antes de terminar
+  npc = crearNPC(
+    sala.limites,
+    sala.obstaculos,
+    () => [caja(usuario), ...npcs.filter(n => n !== npc).map(caja)],
+    { imagen, x, y }
+  );
+
+  npcs.push(npc);
+  sala.appendChild(npc);
+});
 
 sala.appendChild(usuario);
-sala.appendChild(npc);
 
 // =========================
 // MUNDO: zona ampliada (izquierda) + la sala de siempre (derecha)
@@ -70,15 +107,14 @@ app.appendChild(mundo);
 // =========================
 // CÁMARA: sigue al personaje con suavidad
 // =========================
-const SUAVIDAD_CAMARA = 0.15; // 1 = pegada al personaje, más chico = más suave
+const SUAVIDAD_CAMARA = 0.15;
 let camaraX = null;
 
 function actualizarCamara() {
   const { x } = usuario.obtenerPosicion();
-  const centroJugador = AMPLIACION + x + MARGEN_X; // centro del personaje en el mundo
+  const centroJugador = AMPLIACION + x + MARGEN_X;
   const anchoPantalla = window.innerWidth;
 
-  // la cámara no se sale del mapa (ni por la izquierda ni por la derecha)
   const objetivo = Math.max(0, Math.min(centroJugador - anchoPantalla / 2, ANCHO_MUNDO - anchoPantalla));
 
   camaraX = camaraX === null ? objetivo : camaraX + (objetivo - camaraX) * SUAVIDAD_CAMARA;
@@ -96,8 +132,9 @@ document.querySelectorAll(".checklist-item").forEach(item => {
 
 iniciarObras(sala, usuario);
 
-// ...el resto igual (música)
-
+// =========================
+// MÚSICA
+// =========================
 const musica = new Audio("/musicasalauno.mp3");
 musica.loop = true;
 musica.volume = 0.4;
@@ -108,4 +145,3 @@ document.addEventListener("keydown", () => {
     .then(() => console.log("MÚSICA REPRODUCIÉNDOSE"))
     .catch(error => console.error("ERROR DE AUDIO:", error));
 }, { once: true });
-
