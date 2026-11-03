@@ -5,7 +5,13 @@ import { crearPersonaje } from "./general/personaje.js";
 import { iniciarObras } from "./salas/sala1/obras.js";
 import { crearNPC } from "./salas/sala1/npcs.js";
 import { crearChecklist } from "./salas/sala1/mision.js";
+import { iniciarMisionNPC } from "./salas/sala1/mision-npc.js";
 import { crearMusicos } from "./salas/sala1/musicos.js";
+
+
+
+
+
 
 const app = document.querySelector("#app");
 const sala = crearParedes();
@@ -123,13 +129,22 @@ function actualizarCamara() {
   requestAnimationFrame(actualizarCamara);
 }
 actualizarCamara();
+const checklist = crearChecklist("Buscá a la chica de pelo rosa");
+document.body.appendChild(checklist);
+requestAnimationFrame(() => checklist.classList.add("visible"));
 
-// Checklist directo en body, para que position: fixed funcione bien
-document.body.appendChild(crearChecklist());
-document.querySelectorAll(".checklist-item").forEach(item => {
-  item.addEventListener("click", () => item.classList.toggle("completado"));
-});
+const mision = {
+  completar() {
+    checklist.classList.add("completada");
+    setTimeout(() => checklist.classList.remove("visible"), 3500);
+  },
+};
 
+const npcRosa = npcs[IMAGENES_NPCS.indexOf("/npccinco.png")];
+iniciarMisionNPC({ usuario, npc: npcRosa, mision });
+
+
+iniciarMisionNPC({ usuario, npc: npcRosa, mision });
 iniciarObras(sala, usuario);
 
 // =========================
@@ -139,9 +154,17 @@ const musica = new Audio("/musicasalauno.mp3");
 musica.loop = true;
 musica.volume = 0.4;
 
-document.addEventListener("keydown", () => {
-  console.log("TECLA DETECTADA");
+const eventosActivacion = ["keydown", "pointerdown", "click", "touchstart"];
+
+function iniciarMusica() {
   musica.play()
-    .then(() => console.log("MÚSICA REPRODUCIÉNDOSE"))
-    .catch(error => console.error("ERROR DE AUDIO:", error));
-}, { once: true });
+    .then(() => {
+      console.log("MÚSICA REPRODUCIÉNDOSE");
+      eventosActivacion.forEach(ev => document.removeEventListener(ev, iniciarMusica));
+    })
+    .catch(() => {
+      // Todavía no hubo una activación válida: seguimos esperando el próximo evento
+    });
+}
+
+eventosActivacion.forEach(ev => document.addEventListener(ev, iniciarMusica));

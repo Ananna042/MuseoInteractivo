@@ -4,12 +4,12 @@ const tareas = [
   { id: 3, texto: "Responder 3ra pregunta" },
 ];
 
-export function crearChecklist() {
+export function crearChecklist(titulo = "Tareas") {
   const panel = document.createElement("div");
   panel.className = "checklist";
 
   panel.innerHTML = `
-    <div class="checklist-titulo">Tareas</div>
+    <div class="checklist-titulo">${titulo}</div>
     ${tareas.map(t => `
       <div class="checklist-item" data-id="${t.id}">
         <div class="check-circulo">
@@ -19,11 +19,13 @@ export function crearChecklist() {
       </div>
     `).join("")}
   `;
-
   return panel;
 }
 
 export function completarTarea(id) {
-  const item = document.querySelector(`.checklist-item[data-id="${id}"]`);
-  if (item) item.classList.add("completado");
+  document.querySelector(`.checklist-item[data-id="${id}"]`)?.classList.add("completado");
+}
+
+export function reiniciarTareas() {
+  document.querySelectorAll(".checklist-item").forEach(i => i.classList.remove("completado"));
 }

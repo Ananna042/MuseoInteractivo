@@ -98,6 +98,7 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => [], opci
   let direccionWander = null;
   let enPausa = false;
   let tiempoRestante = 0;
+  let pausado = false; // lo usa la misión para dejarlo quieto
 
   function puedeMover(eje, delta) {
     let nuevaX = posicionX;
@@ -147,13 +148,17 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => [], opci
 
   let ultimoFrame = performance.now();
 
-  function loop(ahora) {
-    const delta = ahora - ultimoFrame;
-    ultimoFrame = ahora;
 
-    if (enPausa) {
-      tiempoRestante -= delta;
-      if (tiempoRestante <= 0) elegirNuevaAccion();
+    function loop(ahora) {
+  const delta = ahora - ultimoFrame;
+  ultimoFrame = ahora;
+
+  if (pausado) {
+    // quieto, no hace nada
+  } else if (enPausa) {
+    tiempoRestante -= delta;
+    if (tiempoRestante <= 0) elegirNuevaAccion();
+ 
     } else {
       let seMovio = false;
       if (direccionWander === "arriba") seMovio = moverEje("y", -velocidad);
@@ -182,6 +187,24 @@ export function crearNPC(limites, obstaculos = [], obtenerOtros = () => [], opci
 
   // Caja de colisión, para que otros NPC (y el jugador) lo esquiven
   npc.obtenerCaja = () => ({ x: posicionX, y: posicionY, ancho: tamaño, alto: tamaño });
+
+// Se queda quieto y mira hacia el punto (x, y) indicado
+npc.detener = (haciaX, haciaY) => {
+  pausado = true;
+  if (haciaX !== undefined) {
+    const dx = haciaX - posicionX;
+    const dy = haciaY - posicionY;
+    direccionActual = Math.abs(dx) > Math.abs(dy)
+      ? (dx > 0 ? "derecha" : "izquierda")
+      : (dy > 0 ? "abajo" : "arriba");
+  }
+  ponerIdle();
+};
+
+npc.reanudar = () => {
+  pausado = false;
+  elegirNuevaAccion();
+};
 
   return npc;
 }

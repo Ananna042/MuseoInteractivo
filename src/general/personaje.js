@@ -29,6 +29,7 @@ export function crearPersonaje(limites, obstaculos = [], obtenerOtros = () => []
   let frameCaminataIndex = 0;
   let timeoutIdle = null;
   let ultimoCambioFrame = 0;
+  let pausado = false;
 
   usuario.style.backgroundImage = "url('/personajefinal.png')";
   usuario.style.width = `${TAMAÑO_VISUAL}px`;
@@ -134,9 +135,11 @@ export function crearPersonaje(limites, obstaculos = [], obtenerOtros = () => []
     }
   }
 
-  document.addEventListener("keydown", (evento) => {
-    moverPersonaje(evento.key);
-  });
+document.addEventListener("keydown", (evento) => {
+  if (pausado) return;
+  moverPersonaje(evento.key);
+});
+
 
   actualizarPosicionVisual();
   ponerIdle();
@@ -149,6 +152,22 @@ export function crearPersonaje(limites, obstaculos = [], obtenerOtros = () => []
       y: posicionY
     };
   };
+
+usuario.pausar = () => {
+  pausado = true;
+  clearTimeout(timeoutIdle);
+  ponerIdle();
+};
+usuario.reanudar = () => { pausado = false; };
+
+
+usuario.pausar = () => {
+  pausado = true;
+  clearTimeout(timeoutIdle);
+  ponerIdle();
+};
+usuario.reanudar = () => { pausado = false; };
+
 
   return usuario;
 }
