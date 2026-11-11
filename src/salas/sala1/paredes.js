@@ -18,8 +18,7 @@ export function crearParedes() {
   // Pared del medio de la 3ra pantalla (la de más a la izquierda del mapa).
   // tercerapared.png mide 933px y se dibuja a 943px (mismo estirado que las otras paredes)
   const TERCERA_ANCHO = 943;
-  const TERCERA_X = -AMPLIACION + (SALA_ANCHO - TERCERA_ANCHO) / 2;  // centrada en esa pantalla
-
+  const TERCERA_X = -AMPLIACION + 0;
   // Colchón extra de colisión en las paredes nuevas
   const MARGEN_ARRIBA = 20; // el personaje se frena antes por arriba
   const MARGEN_LADO = 8;    // y antes en los bordes que dan al hueco
@@ -54,69 +53,55 @@ export function crearParedes() {
     });
   }
 
-  // Esculturas con pedestal (tienen que coincidir con background-position y
-  // background-size de .sala en el CSS). Los números "visX/ped" son de la
-  // imagen original en px; la función los escala según el alto dibujado.
-  const ESC_ALTO = 130;     // = "auto 130px" del CSS
-  const MARGEN_ESC = 6;     // colchón lateral y arriba
 
-  function colisionEscultura({ x, y, imgAlto, visX0, visX1, pedTop, pedBottom }) {
-    const s = ESC_ALTO / imgAlto;
+    // ===== Esculturas (las 7 nuevas, todas con el mismo pedestal) =====
+  // Tienen que coincidir con el CSS: todas "auto 130px" (102 x 130 px)
+   // ===== Esculturas (las 7 nuevas, todas con el mismo pedestal) =====
+  // Tienen que coincidir con el CSS: todas "auto 130px" (102 x 130 px)
+   // ===== Esculturas (las 7 nuevas, todas con el mismo pedestal) =====
+  // Tienen que coincidir con el CSS: todas "auto 130px" (102 x 130 px)
+  const ESC_ALTO = 130;     // = "auto 130px" del CSS
+  const ESC_OFFSET_X = 2240; // = left: -2240px de .sala::before (las del ::before)
+  const ESC_Y = 350;         // = --esc-y
+
+  // Medidas comunes de los PNG (1008 x 1284, celda de 12px)
+  const IMG_ALTO = 1284;
+  const BLOQUE_X0 = 240;    // borde izquierdo del bloque
+  const BLOQUE_X1 = 768;    // borde derecho del bloque
+  const TOPE_ESC = 288;     // tope común de todas las esculturas (fila 24)
+  const FONDO_PED = 1260;   // base del pedestal
+
+  // Márgenes de colisión de las esculturas
+  const MARGEN_LADO_ESC = 6;       // colchón a los costados
+  const MARGEN_ARRIBA_ESC = 16;    // más = el personaje se frena más lejos por arriba
+  const RECORTE_ABAJO_ESC = 25;     // más = el personaje se acerca más por abajo
+
+  function colisionEscultura(x, y) {
+    const s = ESC_ALTO / IMG_ALTO;
+    const arriba = y + TOPE_ESC * s - MARGEN_ARRIBA_ESC;
+    const abajo = y + FONDO_PED * s - RECORTE_ABAJO_ESC;
     return {
-      x: Math.round(x + visX0 * s - MARGEN_ESC),
-      y: Math.round(y + pedTop * s - MARGEN_ESC),
-      ancho: Math.round((visX1 - visX0) * s + MARGEN_ESC * 2),
-      alto: Math.round((pedBottom - pedTop) * s + MARGEN_ESC),
+      x: Math.round(x + BLOQUE_X0 * s - MARGEN_LADO_ESC),
+      y: Math.round(arriba),
+      ancho: Math.round((BLOQUE_X1 - BLOQUE_X0) * s + MARGEN_LADO_ESC * 2),
+      alto: Math.round(abajo - arriba),
     };
   }
 
   const esculturas = [
-    // escultura2 (manos): 650px 200px
-    colisionEscultura({
-      x: 650, y: 200,
-      imgAlto: 1284,
-      visX0: 240, visX1: 768, pedTop: 15, pedBottom: 1260,
-    }),
-    // escultura3 (busto): 650px 390px
-    colisionEscultura({
-      x: 650, y: 390,
-      imgAlto: 1320,
-      visX0: 240, visX1: 768, pedTop: 10, pedBottom: 1296,
-    }),
-  ];
+    // sala (pantalla del piano)
+    colisionEscultura(650, 200),                              // escultura2
+    colisionEscultura(650, 390),                              // escultura1
 
-
-
-  // ===== Esculturas nuevas (las 6 del piso ampliado) =====
-  // Tienen que coincidir con .sala::before en el CSS
-  const ESC_OFFSET_X = 2240;       // = left: -2240px
-  const ESC_Y = 350;               // = --esc-y
-  const ESC_ANCHO = 100.8;         // = --esc-ancho
-  const ESC_ALTO_NUEVO = 132;      // = --esc-alto
-
-  function colisionNueva({ cssX, cssY, ancho, alto, recorteLado = 20, recorteArriba = 5 }) {
-    return {
-      x: Math.round(cssX - ESC_OFFSET_X + recorteLado - MARGEN_ESC),
-      y: Math.round(cssY + recorteArriba - MARGEN_ESC),
-      ancho: Math.round(ancho - recorteLado * 2 + MARGEN_ESC * 2),
-      alto: Math.round(alto - recorteArriba + MARGEN_ESC),
-    };
-  }
-
-  const esculturasNuevas = [
     // pantalla del medio
-    colisionNueva({ cssX: 1680, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura4 (el beso)
-    colisionNueva({ cssX: 1835, cssY: ESC_Y + 35, ancho: 150,       alto: 150 }),            // escultura1 (al medio)
-    colisionNueva({ cssX: 2042, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura5
+    colisionEscultura(1680 - ESC_OFFSET_X, ESC_Y),            // escultura3
+    colisionEscultura(1940 - ESC_OFFSET_X, ESC_Y),            // escultura4
 
-    // tercera pantalla
-    colisionNueva({ cssX: 715,  cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura6
-    colisionNueva({ cssX: 865,  cssY: ESC_Y,      ancho: 170,       alto: 190 }),            // escultura8 (al medio)
-    colisionNueva({ cssX: 1081, cssY: ESC_Y,      ancho: ESC_ANCHO, alto: ESC_ALTO_NUEVO }), // escultura7
+    // pantalla de la izquierda (al lado del piano)
+    colisionEscultura(590 - ESC_OFFSET_X, ESC_Y),             // escultura5
+    colisionEscultura(790 - ESC_OFFSET_X, ESC_Y + 35),        // escultura6 (más abajo)
+    colisionEscultura(990 - ESC_OFFSET_X, ESC_Y),             // escultura7
   ];
-
-
-
 
 
   const obstaculos = [
@@ -149,7 +134,6 @@ export function crearParedes() {
 
     ...bancas,
     ...esculturas,
-    ...esculturasNuevas
   ];
 
   sala.limites = limites;

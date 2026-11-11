@@ -3,7 +3,7 @@
 //  La información de cada obra se completa en obras-contenido.js
 // =====================================================================
 import { CONTENIDO } from './obrascontenido.js';
-
+import { CONTENIDO_ESCULTURAS } from './esculturascontenido.js';
 // y de las obras de las paredes de abajo = --pared-y (sala1.css) + 10
 const Y_ABAJO = 313;
 
@@ -46,11 +46,12 @@ const POSICIONES = [
   [26, 'obra26', -2471, 10, 145, 125],
   [31, 'obra31', -2282, 10, 94, 125],
 
+
   // ---------- Última pantalla, pared del medio ----------
-  [27, 'obra27', -2525, Y_ABAJO, 195, 125],
-  [28, 'obra28', -2284, Y_ABAJO, 153, 125],
-  [29, 'obra29', -2085, Y_ABAJO, 166, 125],
-  [30, 'obra30', -1873, Y_ABAJO, 198, 125],
+[27, 'obra27', -2760, Y_ABAJO, 195, 125],
+[28, 'obra28', -2519, Y_ABAJO, 153, 125],
+[29, 'obra29', -2320, Y_ABAJO, 166, 125],
+[30, 'obra30', -2108, Y_ABAJO, 198, 125],
 ];
 
 // Etiquetas que se muestran, en este orden (clave en CONTENIDO -> texto)
@@ -95,7 +96,80 @@ function armarObra([numero, id, x, y, width, height]) {
   };
 }
 
-const obras = POSICIONES.map(armarObra);
+
+
+
+
+
+// =====================================================================
+//  ESCULTURAS  (mismo botón E que las obras)
+// =====================================================================
+
+// Tienen que coincidir con el CSS y con los límites (paredes.js)
+const ESC_ALTO = 130;          // = "auto 130px"
+const ESC_IMG_ALTO = 1284;     // alto del PNG
+const ESC_S = ESC_ALTO / ESC_IMG_ALTO;
+const ESC_BLOQUE_X0 = 240;     // borde izquierdo del bloque dentro del PNG
+const ESC_BLOQUE_X1 = 768;     // borde derecho
+const ESC_TOPE = 288;          // tope de la escultura
+const ESC_FONDO = 1260;        // base del pedestal
+
+// Distancia propia de las esculturas (las obras usan 80). Subila si cuesta que aparezca la E.
+const ESC_DISTANCIA = 100;
+
+// [numero, id, x, y]  ->  x, y = posición CSS de la imagen (esquina superior izquierda, en el mundo)
+//   ::before:  x = cssX - 2240
+const POSICIONES_ESCULTURAS = [
+  [1, 'escultura1',   650, 390],
+  [2, 'escultura2',   650, 200],
+  [3, 'escultura3',  -560, 350],   // 1680 - 2240
+  [4, 'escultura4',  -300, 350],   // 1940 - 2240
+  [5, 'escultura5', -1650, 350],   //  590 - 2240
+  [6, 'escultura6', -1450, 385],   //  790 - 2240, +35
+  [7, 'escultura7', -1250, 350],   //  990 - 2240
+];
+
+function armarEscultura([numero, id, cx, cy]) {
+  // zona de la escultura: el bloque con su escultura (sin el espacio transparente del PNG)
+  const caja = {
+    id,
+    x: cx + ESC_BLOQUE_X0 * ESC_S,
+    y: cy + ESC_TOPE * ESC_S,
+    width: (ESC_BLOQUE_X1 - ESC_BLOQUE_X0) * ESC_S,
+    height: (ESC_FONDO - ESC_TOPE) * ESC_S,
+    distancia: ESC_DISTANCIA,
+  };
+
+  const c = CONTENIDO_ESCULTURAS[numero] || {};
+  const titulo = limpiar(c.titulo);
+  const autor = limpiar(c.autor);
+
+  if (!titulo) {
+    return { ...caja, imagenReal: null, titulo: 'Próximamente', autor: '', datos: [] };
+  }
+
+  return {
+    ...caja,
+    imagenReal: `/esculturareal${numero}.png`,
+    titulo,
+    autor: autor ? `Autor: ${autor}` : '',
+    datos: CAMPOS
+      .map(([clave, etiqueta]) => ({ etiqueta, valor: limpiar(c[clave]) }))
+      .filter(d => d.valor),
+  };
+}
+
+
+
+
+const obras = [
+  ...POSICIONES.map(armarObra),
+  ...POSICIONES_ESCULTURAS.map(armarEscultura),
+];
+
+
+
+
 
 const DISTANCIA_INTERACCION = 80;
 

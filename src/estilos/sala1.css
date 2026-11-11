@@ -96,13 +96,19 @@ html, body {
     329px 10px,
     518px 10px,
 
-    /* pared del medio (separación de 46px) */
-    275px calc(var(--pared-y) + 10px),
-    516px calc(var(--pared-y) + 10px),
-    715px calc(var(--pared-y) + 10px),
-    927px calc(var(--pared-y) + 10px),
 
-    center var(--pared-y),
+
+    /* pared del medio (separación de 46px) */
+40px  calc(var(--pared-y) + 10px),   /* obra27 (195px de ancho) */
+281px calc(var(--pared-y) + 10px),   /* obra28: 516 - 235 */
+480px calc(var(--pared-y) + 10px),   /* obra29: 715 - 235 */
+692px calc(var(--pared-y) + 10px),   /* obra30: 927 - 235 */
+
+     
+
+
+    
+    0px var(--pared-y),
     left top,
     top left;
 
@@ -137,7 +143,7 @@ html, body {
 
 /* esculturas (arriba de todo) */
     url('/escultura2.png'),
-    url('/escultura3.png'),
+    url('/escultura1.png'),   /* antes: escultura3 */
 
 
 
@@ -230,7 +236,6 @@ html, body {
    separación pareja de 43.5px, 125px de alto, y=10px
    la última (obra23) termina a 43.5px de primerobra
 ========================= */
-
 .sala::before {
   content: "";
   position: absolute;
@@ -242,18 +247,17 @@ html, body {
 
   /* ajustes de las esculturas (se cambian acá y listo) */
   --esc-y: 350px;          /* altura de la fila */
-  --esc-ancho: 100.8px;    /* 132px de alto × 84/110 */
-  --esc-alto: 132px;
+  --esc-ancho: 102px;      /* 130px de alto × 1008/1284 */
+  --esc-alto: 130px;       /* mismo alto que las de la sala */
 
   background-image:
-    /* esculturas: fila derecha (4 - 1 - 5) */
+    /* pantalla del medio: 3 y 4 */
+    url('/escultura3.png'),
     url('/escultura4.png'),
-    url('/escultura1.png'),
-    url('/escultura5.png'),
 
-    /* esculturas: fila izquierda del piano (6 - 8 - 7) */
+    /* pantalla del piano (izquierda): 5, 6 y 7 */
+    url('/escultura5.png'),
     url('/escultura6.png'),
-    url('/escultura8.png'),
     url('/escultura7.png'),
 
     url('/obra12.png'),
@@ -270,13 +274,12 @@ html, body {
     url('/obra23.png');
 
   background-position:
-    1680px var(--esc-y),    /* escultura4 (el beso) */
-    1835px calc(var(--esc-y) + 35px),    /* escultura1 (al medio) */
-    2042px var(--esc-y),    /* escultura5 */
+    1680px var(--esc-y),                    /* escultura3 */
+    1940px var(--esc-y),                    /* escultura4 */
 
-    715px var(--esc-y),     /* escultura6 */
-    865px var(--esc-y),     /* escultura8 (al medio) */
-    1081px var(--esc-y),    /* escultura7 */
+    590px var(--esc-y),                     /* escultura5 */
+    790px calc(var(--esc-y) + 35px),        /* escultura6: en el medio de 5 y 7, más abajo */
+    990px var(--esc-y),                     /* escultura7 */
 
     96px 10px,
     284px 10px,
@@ -292,13 +295,12 @@ html, body {
     2102px 10px;
 
   background-size:
-    var(--esc-ancho) var(--esc-alto),
-    150px 150px,                      /* escultura1: ancho alto */
-    var(--esc-ancho) var(--esc-alto),
+    auto var(--esc-alto),
+    auto var(--esc-alto),
 
-    var(--esc-ancho) var(--esc-alto),
-    170px 190px,                      /* escultura1: ancho alto */
-    var(--esc-ancho) var(--esc-alto),
+    auto var(--esc-alto),
+    auto var(--esc-alto),
+    auto var(--esc-alto),
 
     144px 125px,
     91px 125px,
@@ -316,8 +318,6 @@ html, body {
   background-repeat: no-repeat;
   image-rendering: pixelated;
 }
-
-
 
 /* =========================
    BANCAS (pantalla 2, la del medio)
