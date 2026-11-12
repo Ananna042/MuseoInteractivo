@@ -1,16 +1,16 @@
 import "./estilos/sala1.css";
+import "./estilos/hud.css";
 
 import { crearParedes, AMPLIACION } from "./salas/sala1/paredes.js";
 import { crearPersonaje } from "./general/personaje.js";
+import { crearVidas } from "./general/vidas.js";
+import { mostrarPantalla } from "./general/pantallas.js";
+import { NIVELES } from "./general/niveles.js";
 import { iniciarObras } from "./salas/sala1/obras.js";
 import { crearNPC } from "./salas/sala1/npcs.js";
-import { crearChecklist } from "./salas/sala1/mision.js";
-import { iniciarMisionNPC } from "./salas/sala1/mision-npc.js";
+import { crearEncuentroNPC } from "./salas/sala1/mision-npc.js";
+import { crearMision } from "./salas/sala1/mision.js";
 import { crearMusicos } from "./salas/sala1/musicos.js";
-
-
-
-
 
 
 const app = document.querySelector("#app");
@@ -43,7 +43,7 @@ const choca = (a, b) =>
 // =========================
 const IMAGENES_NPCS = [
   "/npcuno.png", "/npcdos.png", "/npctres.png", "/npccuatro.png",
-  "/npccinco.png", "/npcseis.png", "/npcsiete.png", "/npcocho.png",
+  "/npccinco.png", "/npcseis.png", "/npcsiete.png", "/npcocho.png", "/npcnueve.png", "/npcdiez.png",
 ];
 
 const npcs = [];
@@ -129,23 +129,113 @@ function actualizarCamara() {
   requestAnimationFrame(actualizarCamara);
 }
 actualizarCamara();
-const checklist = crearChecklist("Buscá a la chica de pelo rosa");
-document.body.appendChild(checklist);
-requestAnimationFrame(() => checklist.classList.add("visible"));
 
-const mision = {
-  completar() {
-    checklist.classList.add("completada");
-    setTimeout(() => checklist.classList.remove("visible"), 3500);
-  },
+// =========================
+// VIDAS
+// =========================
+const NIVEL_ACTUAL = 1;
+
+const vidas = crearVidas({
+  alSinVidas: () => gameOver("vidas"),
+});
+
+// =========================
+// GAME OVER (las 3 formas de perder)
+// =========================
+const MOTIVOS_DERROTA = {
+  observacion: "Se acabó el tiempo y no observaste todas las piezas.",
+  busqueda: "No encontraste al NPC a tiempo.",
+  vidas: "Te quedaste sin vidas.",
 };
 
-const npcRosa = npcs[IMAGENES_NPCS.indexOf("/npccinco.png")];
-iniciarMisionNPC({ usuario, npc: npcRosa, mision });
+let juegoTerminado = false;
 
+function gameOver(motivo) {
+  if (juegoTerminado) return;
+  juegoTerminado = true;
 
-iniciarMisionNPC({ usuario, npc: npcRosa, mision });
-iniciarObras(sala, usuario);
+  mision.detener();
+  encuentro.cancelar();
+  usuario.pausar();
+
+  mostrarPantalla({
+    tono: "mal",
+    titulo: "GAME OVER",
+    mensaje: MOTIVOS_DERROTA[motivo] ?? "Perdiste.",
+    detalle: `Nivel ${NIVEL_ACTUAL}`,
+    boton: "Volver a empezar",
+    alBoton: () => location.reload(),     // empieza todo de nuevo
+  });
+}
+
+// =========================
+// NPC OBJETIVO: pistas para encontrarlo
+// Agregá una línea por NPC. Solo los que tienen pista pueden ser el objetivo.
+// =========================
+const PISTAS_NPC = {
+  "/npccinco.png": "la chica de pelo rosa",
+  // "/npcuno.png": "el chico de ...",
+  // "/npcdos.png": "...",
+};
+
+function empezarBusquedaNPC() {
+  const candidatos = IMAGENES_NPCS.filter(img => PISTAS_NPC[img]);
+  const imagen = candidatos[Math.floor(Math.random() * candidatos.length)];
+  const npc = npcs[IMAGENES_NPCS.indexOf(imagen)];
+
+  mision.fijarPista(PISTAS_NPC[imagen]);
+  encuentro.activar(npc);          // recién ahora se habilita el encuentro con ese NPC
+}
+
+// =========================
+// MISIÓN DEL NIVEL (panel + temporizadores)
+// =========================
+const mision = crearMision({
+  nivel: NIVEL_ACTUAL,
+  alPerder: gameOver,                               // se acabó el tiempo (observación o búsqueda)
+  alCompletarObservacion: empezarBusquedaNPC,
+});
+
+// SOLO PARA PROBAR desde la consola:
+//   mision.registrarObra(1)   mision.registrarObra(2)   vidas.perder()
+window.mision = mision;
+window.vidas = vidas;
+
+// el ícono aparece a los 5 segundos y ahí arranca el tiempo de observación
+setTimeout(() => mision.iniciar(), 5000);
+
+// =========================
+// ENCUENTRO CON EL NPC (quiz)
+// =========================
+function nivelCompletado() {
+  mision.completar();
+  vidas.ganar();                                    // completar un nivel recupera 1 vida (tope 5)
+
+  const nivel = NIVELES.find(n => n.numero === NIVEL_ACTUAL);
+  mostrarPantalla({
+    tono: "bien",
+    titulo: `¡NIVEL ${NIVEL_ACTUAL} COMPLETADO!`,
+    mensaje: nivel.mensajeFinal,
+    detalle: "Los próximos niveles vienen pronto.",
+    boton: "Jugar de nuevo",
+    alBoton: () => location.reload(),
+  });
+}
+
+const encuentro = crearEncuentroNPC({
+  usuario,
+  mision,
+  vidas,
+  alTerminarQuiz: nivelCompletado,
+});
+
+// al cerrar el panel de una obra/escultura, la misión la cuenta (y se dibuja el check)
+const obrasUI = iniciarObras(sala, usuario, {
+  alObservar: (pieza) =>
+    pieza.tipo === "obra"
+      ? mision.registrarObra(pieza.numero)
+      : mision.registrarEscultura(pieza.numero),
+});
 
 // =========================
 // MÚSICA

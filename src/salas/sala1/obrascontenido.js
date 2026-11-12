@@ -121,18 +121,18 @@ export const CONTENIDO = {
   },
   // ---------------- OBRA 7 ----------------
   7:  {
-    titulo:  `Bords de rivière (Orillas del río)`,
-    autor:   `Sisley, Alfred`,
-    origen:  `Donación, Bemberg, María Luisa. 1985`,
-    fecha:   `1874`,
-    periodo: 'Arte Siglo XX (1910-1945)', 
-    escuela: `Francesa S.XIX`,
+    titulo:  `Nubes en la sierra`,
+    autor:   `Walter de Navazio`,
+    origen:  `División de Artes Plásticas y Exp. Dir. Gral de Cultura`,
+    fecha:   `c. 1915 `,
+    periodo: 'Arte Siglo XIX (1800-1910)', 
+    escuela: `Argentina S.XIX`,
     tecnica: `Óleo`, 
     objeto:  `Pintura`,
-    estilo:  `Impresionismo`, 
-    genero:  `Paisaje`,
-    soporte: `Sobre tela`, 
-    medidas: `66,4 x 91,8 cm. - Marco: 91 x 116 cm.`,
+    estilo:  `postimpresionismo`, 
+    genero:  `paisaje`,
+    soporte: `sobre tela `, 
+    medidas: `69,5 x 79 cm`,
   },
 
   // ---------------- OBRA 8 ----------------

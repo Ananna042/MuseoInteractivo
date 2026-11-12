@@ -82,10 +82,11 @@ function armarObra([numero, id, x, y, width, height]) {
   const autor = limpiar(c.autor);
 
   if (!titulo) {
-    return { id, x, y, width, height, distancia: DISTANCIAS[id], imagenReal: null, titulo: 'Próximamente', autor: '', datos: [] };
+    return { numero, tipo: 'obra', conContenido: false, id, x, y, width, height, distancia: DISTANCIAS[id], imagenReal: null, titulo: 'Próximamente', autor: '', datos: [] };
   }
 
   return {
+    numero, tipo: 'obra', conContenido: true,
     id, x, y, width, height, distancia: DISTANCIAS[id],
     imagenReal: `/obrareal${numero}.png`,
     titulo,
@@ -115,7 +116,15 @@ const ESC_TOPE = 288;          // tope de la escultura
 const ESC_FONDO = 1260;        // base del pedestal
 
 // Distancia propia de las esculturas (las obras usan 80). Subila si cuesta que aparezca la E.
-const ESC_DISTANCIA = 100;
+// Zona de interacción: un rectángulo delante del pedestal (el centro del personaje tiene que estar adentro)
+const ESC_ZONA_LADO = 4;     // cuánto sobresale a los costados del pedestal (0 = justo el ancho del bloque)
+const ESC_ZONA_ARRIBA = 60;  // cuánto sube desde la base del pedestal
+const ESC_ZONA_ABAJO = 25;   // cuánto baja desde la base del pedestal
+const ESC_DEBUG = false;     // true = dibuja las zonas en rojo para ajustarlas
+
+
+
+
 
 // [numero, id, x, y]  ->  x, y = posición CSS de la imagen (esquina superior izquierda, en el mundo)
 //   ::before:  x = cssX - 2240
@@ -131,13 +140,23 @@ const POSICIONES_ESCULTURAS = [
 
 function armarEscultura([numero, id, cx, cy]) {
   // zona de la escultura: el bloque con su escultura (sin el espacio transparente del PNG)
+ 
+    const x = cx + ESC_BLOQUE_X0 * ESC_S;
+  const y = cy + ESC_TOPE * ESC_S;
+  const width = (ESC_BLOQUE_X1 - ESC_BLOQUE_X0) * ESC_S;
+  const height = (ESC_FONDO - ESC_TOPE) * ESC_S;
+  const fondo = y + height;   // base del pedestal
+
   const caja = {
-    id,
-    x: cx + ESC_BLOQUE_X0 * ESC_S,
-    y: cy + ESC_TOPE * ESC_S,
-    width: (ESC_BLOQUE_X1 - ESC_BLOQUE_X0) * ESC_S,
-    height: (ESC_FONDO - ESC_TOPE) * ESC_S,
-    distancia: ESC_DISTANCIA,
+    numero, tipo: 'escultura',
+    id, x, y, width, height,
+    distancia: Infinity,      // no se usa el círculo: manda la zona
+    zona: {
+      x0: x - ESC_ZONA_LADO,
+      x1: x + width + ESC_ZONA_LADO,
+      y0: fondo - ESC_ZONA_ARRIBA,
+      y1: fondo + ESC_ZONA_ABAJO,
+    },
   };
 
   const c = CONTENIDO_ESCULTURAS[numero] || {};
@@ -145,11 +164,12 @@ function armarEscultura([numero, id, cx, cy]) {
   const autor = limpiar(c.autor);
 
   if (!titulo) {
-    return { ...caja, imagenReal: null, titulo: 'Próximamente', autor: '', datos: [] };
+    return { ...caja, conContenido: false, imagenReal: null, titulo: 'Próximamente', autor: '', datos: [] };
   }
 
   return {
     ...caja,
+    conContenido: true,
     imagenReal: `/esculturareal${numero}.png`,
     titulo,
     autor: autor ? `Autor: ${autor}` : '',
@@ -201,7 +221,9 @@ function construirPanel(obra) {
   `;
 }
 
-export function iniciarObras(sala, usuario) {
+// alObservar(pieza) se llama cuando el jugador CIERRA el panel de una pieza.
+// Tiene que devolver true si la misión la contó (así se dibuja el check) o false si no.
+export function iniciarObras(sala, usuario, { alObservar = () => false } = {}) {
   const prompt = document.createElement('div');
   prompt.className = 'prompt-interaccion tecla';
   prompt.textContent = 'E';
@@ -222,12 +244,41 @@ export function iniciarObras(sala, usuario) {
   document.body.appendChild(overlay);
 
   let obraActual = null;
+  let obraAbierta = null;     // la pieza cuyo panel está abierto ahora
   let panelAbierto = false;
   let rafId = 0;
+
+  // ---------- marcas de "ya la vi" (círculo con check) ----------
+  const marcas = new Map();
+
+  function ponerMarca(pieza) {
+    if (marcas.has(pieza.id)) return;
+    const marca = document.createElement('img');
+    marca.className = 'marca-vista';
+    marca.src = '/visto.png';
+    marca.alt = '';
+    // esquina superior derecha de la pieza, por dentro
+    marca.style.left = `${pieza.x + pieza.width - 22}px`;
+    marca.style.top = `${pieza.y + 22}px`;
+    sala.appendChild(marca);
+    marcas.set(pieza.id, marca);
+  }
+
+  function reiniciarMarcas() {
+    marcas.forEach(m => m.remove());
+    marcas.clear();
+  }
 
   function cerrar() {
     overlay.classList.remove('activo');
     panelAbierto = false;
+
+    // al cerrar, la pieza queda registrada como observada
+    if (obraAbierta) {
+      const pieza = obraAbierta;
+      obraAbierta = null;
+      if (pieza.conContenido && alObservar(pieza)) ponerMarca(pieza);
+    }
   }
 
   function actualizar() {
@@ -240,16 +291,28 @@ export function iniciarObras(sala, usuario) {
     let obraCercana = null;
     let menorDistancia = Infinity;
 
-    for (const obra of obras) {
-      const dx = usuarioX - (obra.x + obra.width / 2);
-      const dy = usuarioY - (obra.y + obra.height / 2);
-      const distancia = Math.sqrt(dx * dx + dy * dy);
+  
+        for (const obra of obras) {
+      let distancia;
+
+      if (obra.zona) {
+        // escultura: solo cuenta si estás dentro de la zona de enfrente
+        const z = obra.zona;
+        if (usuarioX < z.x0 || usuarioX > z.x1 || usuarioY < z.y0 || usuarioY > z.y1) continue;
+        distancia = Math.abs(usuarioX - (obra.x + obra.width / 2));
+      } else {
+        // obra de pared: igual que antes
+        const dx = usuarioX - (obra.x + obra.width / 2);
+        const dy = usuarioY - (obra.y + obra.height / 2);
+        distancia = Math.sqrt(dx * dx + dy * dy);
+      }
 
       if (distancia < menorDistancia) {
         menorDistancia = distancia;
         obraCercana = obra;
       }
     }
+
 
     if (!panelAbierto) {
       const limite = obraCercana?.distancia ?? DISTANCIA_INTERACCION;
@@ -282,6 +345,7 @@ export function iniciarObras(sala, usuario) {
       if (panelAbierto) {
         cerrar();
       } else if (obraActual) {
+        obraAbierta = obraActual;
         panel.innerHTML = construirPanel(obraActual);
         overlay.classList.add('activo');
         panelAbierto = true;
@@ -297,10 +361,13 @@ export function iniciarObras(sala, usuario) {
   });
 
   // Por si algún día hay que reiniciar la sala
-  return function detener() {
+  function detener() {
     cancelAnimationFrame(rafId);
     document.removeEventListener('keydown', alTocarTecla);
     overlay.remove();
     prompt.remove();
-  };
+    reiniciarMarcas();
+  }
+
+  return { detener, reiniciarMarcas };
 }

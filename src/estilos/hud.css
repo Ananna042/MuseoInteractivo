@@ -1,0 +1,325 @@
+/* =========================
+   HUD: VIDAS (arriba a la izquierda)
+========================= */
+.hud-vidas {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Pixelify Sans", monospace;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* el PNG mide 13x12: se agranda x3 con píxeles nítidos */
+.hud-corazon {
+  width: 39px;
+  height: 36px;
+  image-rendering: pixelated;
+}
+
+.hud-vidas-numero {
+  font-size: 34px;
+  line-height: 1;
+  color: #fff;
+  /* contorno pixelado del mismo color oscuro de las esculturas */
+  text-shadow:
+     2px  0   #2a1c28, -2px  0   #2a1c28,
+     0    2px #2a1c28,  0   -2px #2a1c28,
+     2px  2px #2a1c28, -2px -2px #2a1c28,
+     2px -2px #2a1c28, -2px  2px #2a1c28;
+}
+
+/* perder vida: el corazón tiembla y el número se pone rojo */
+.hud-vidas.perdiendo .hud-corazon { animation: corazon-golpe 0.5s steps(1) forwards; }
+.hud-vidas.perdiendo .hud-vidas-numero { animation: numero-rojo 0.6s steps(1) forwards; }
+
+/* ganar vida: el corazón da un saltito */
+.hud-vidas.ganando .hud-corazon { animation: corazon-salto 0.5s steps(1) forwards; }
+
+@keyframes corazon-golpe {
+  0%   { transform: translateX(-6px); filter: brightness(2.2); }
+  20%  { transform: translateX(6px);  filter: brightness(2.2); }
+  40%  { transform: translateX(-6px); filter: none; }
+  60%  { transform: translateX(6px); }
+  80%  { transform: translateX(-3px); }
+  100% { transform: translateX(0); filter: none; }
+}
+
+@keyframes numero-rojo {
+  0%   { color: #ff4a4a; }
+  80%  { color: #ff4a4a; }
+  100% { color: #fff; }
+}
+
+@keyframes corazon-salto {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(-9px); }
+  50%  { transform: translateY(0); }
+  75%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* =========================
+   PANEL DE MISIÓN (borde derecho, a media altura)
+   cerrado = solo el ícono pegado al borde; al clic se despliega hacia la izquierda
+========================= */
+.mision-panel {
+  --ancho-tarjeta: 310px;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  font-family: "Pixelify Sans", monospace;
+  user-select: none;
+
+  /* antes de aparecer: todo fuera de la pantalla */
+  transform: translate(100%, -50%);
+  transition: transform 0.45s steps(9);
+}
+.mision-panel.visible { transform: translate(calc(100% - 54px), -50%); }      /* solo el ícono (54px) pegado al borde */
+.mision-panel.abierto { transform: translate(0, -50%); }                      /* ícono + tarjeta */
+
+/* ---- ícono ---- */
+.mision-icono {
+  position: relative;
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.mision-icono img {
+  display: block;
+  width: 48px;           /* el PNG mide 16x16: se agranda x3 */
+  height: 48px;
+  margin: 3px;
+  image-rendering: pixelated;
+}
+.mision-icono:hover img { filter: brightness(1.15); }
+
+/* hasta el primer clic, el ícono se "asoma" para llamar la atención */
+.mision-panel.llamar:not(.abierto) .mision-icono { animation: icono-llamar 1s steps(1) infinite; }
+@keyframes icono-llamar {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-8px); }
+}
+
+/* tiempo chiquito debajo del ícono (visible con el panel cerrado) */
+.mision-mini {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 4px;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+     2px  0   #2a1c28, -2px  0   #2a1c28,
+     0    2px #2a1c28,  0   -2px #2a1c28,
+     2px  2px #2a1c28, -2px -2px #2a1c28,
+     2px -2px #2a1c28, -2px  2px #2a1c28;
+}
+.mision-mini.urgente { color: #ff5a5a; animation: parpadeo 1s steps(1) infinite; }
+.mision-panel.abierto .mision-mini { display: none; }
+
+/* ---- tarjeta (borde pixelado con esquinas cortadas) ---- */
+.mision-tarjeta {
+  box-sizing: border-box;
+  width: var(--ancho-tarjeta);
+  margin-left: 6px;
+  padding: 14px 18px 16px;
+  background: #f3e3c3;
+  color: #2a1c28;
+  box-shadow:
+    0 -4px 0 0 #2a1c28,  0 4px 0 0 #2a1c28,
+    -4px 0 0 0 #2a1c28,  4px 0 0 0 #2a1c28,
+    inset 4px 4px 0 0 #fff6df,
+    inset -4px -4px 0 0 #d9bf93;
+}
+
+.mision-titulo {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 4px solid #d9bf93;
+}
+
+.mision-objetivo {
+  font-size: 18px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.mision-objetivo.perdido { color: #b02a30; }
+
+.mision-detalle { font-size: 16px; line-height: 1.2; }
+
+.mision-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.mision-fila.hecho { color: #2f7d46; }
+
+.mision-tiempo { font-weight: 700; }
+.mision-tiempo.urgente { color: #b02a30; animation: parpadeo 1s steps(1) infinite; }
+
+@keyframes parpadeo {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.25; }
+}
+
+
+/* =========================
+   MARCA "YA LA VI" (círculo con check sobre la obra)
+========================= */
+.marca-vista {
+  position: absolute;
+  z-index: 3;
+  width: 39px;               /* el PNG mide 13x13: se agranda x3 */
+  height: 39px;
+  transform: translate(-50%, -50%);
+  image-rendering: pixelated;
+  pointer-events: none;
+  animation: marca-pop 0.4s steps(4);
+}
+@keyframes marca-pop {
+  0%   { transform: translate(-50%, -50%) scale(0); }
+  60%  { transform: translate(-50%, -50%) scale(1.4); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* objetivo de observación ya cumplido (espera que termine el tiempo) */
+.mision-objetivo.listo { color: #2f7d46; }
+
+
+/* =========================
+   PANTALLAS (Game Over / Nivel completado)
+========================= */
+.pantalla-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;                       /* por encima del quiz (2000) y del HUD */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 10, 20, 0.88);
+  font-family: "Pixelify Sans", monospace;
+  animation: pantalla-entrada 0.5s steps(5);
+}
+@keyframes pantalla-entrada {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.pantalla-caja {
+  box-sizing: border-box;
+  width: min(560px, 92vw);
+  padding: 34px 30px 30px;
+  text-align: center;
+  background: #f3e3c3;
+  color: #2a1c28;
+  box-shadow:
+    0 -6px 0 0 #2a1c28,  0 6px 0 0 #2a1c28,
+    -6px 0 0 0 #2a1c28,  6px 0 0 0 #2a1c28,
+    inset 6px 6px 0 0 #fff6df,
+    inset -6px -6px 0 0 #d9bf93;
+}
+
+.pantalla-titulo {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  color: #d23a3a;
+  text-shadow: 4px 4px 0 #2a1c28;
+}
+.pantalla-overlay.bien .pantalla-titulo { color: #2f9a54; }
+
+.pantalla-mensaje { font-size: 24px; line-height: 1.25; margin-bottom: 10px; }
+.pantalla-detalle { font-size: 18px; opacity: 0.7; margin-bottom: 24px; min-height: 22px; }
+
+.pantalla-boton {
+  font-family: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 10px 26px;
+  color: #fff;
+  background: #bf3a3a;
+  border: 0;
+  cursor: pointer;
+  box-shadow:
+    0 -4px 0 0 #2a1c28,  0 4px 0 0 #2a1c28,
+    -4px 0 0 0 #2a1c28,  4px 0 0 0 #2a1c28,
+    inset 4px 4px 0 0 #e06a6a,
+    inset -4px -4px 0 0 #8c2630;
+}
+.pantalla-overlay.bien .pantalla-boton {
+  background: #2f9a54;
+  box-shadow:
+    0 -4px 0 0 #2a1c28,  0 4px 0 0 #2a1c28,
+    -4px 0 0 0 #2a1c28,  4px 0 0 0 #2a1c28,
+    inset 4px 4px 0 0 #6fd08c,
+    inset -4px -4px 0 0 #1f6e3a;
+}
+.pantalla-boton:hover { filter: brightness(1.12); }
+.pantalla-boton:active { transform: translateY(2px); }
+.pantalla-boton:focus { outline: none; }
+
+
+/* =========================
+   QUIZ DEL NPC (pixel art, pisa el estilo viejo)
+========================= */
+.hud-vidas { z-index: 2100; }          /* las vidas se ven (y se animan) con el quiz abierto */
+
+.quiz-overlay { font-family: "Pixelify Sans", monospace; }
+.quiz-panel {
+  border-radius: 0;
+  background: #f3e3c3;
+  color: #2a1c28;
+  font-family: "Pixelify Sans", monospace;
+  padding: 26px 28px 24px;
+  box-shadow:
+    0 -6px 0 0 #2a1c28,  0 6px 0 0 #2a1c28,
+    -6px 0 0 0 #2a1c28,  6px 0 0 0 #2a1c28,
+    inset 6px 6px 0 0 #fff6df,
+    inset -6px -6px 0 0 #d9bf93;
+}
+.quiz-progreso { color: #8a6f4e; font-size: 17px; margin-bottom: 10px; }
+.quiz-pregunta { font-size: 23px; line-height: 1.25; margin-bottom: 18px; }
+.quiz-opciones button, .quiz-cerrar {
+  font-family: inherit;
+  font-size: 19px;
+  color: #2a1c28;
+  border: 0;
+  border-radius: 0;
+  background: #fff6df;
+  padding: 11px 12px;
+  box-shadow:
+    0 -3px 0 0 #2a1c28,  0 3px 0 0 #2a1c28,
+    -3px 0 0 0 #2a1c28,  3px 0 0 0 #2a1c28,
+    inset -3px -3px 0 0 #d9bf93;
+}
+.quiz-opciones button:hover:not(:disabled) { background: #ffe9ad; }
+.quiz-opciones button.correcta  { background: #a8e8b6; box-shadow: 0 -3px 0 0 #2a1c28, 0 3px 0 0 #2a1c28, -3px 0 0 0 #2a1c28, 3px 0 0 0 #2a1c28, inset -3px -3px 0 0 #5fb774; }
+.quiz-opciones button.incorrecta { background: #f2a3a3; box-shadow: 0 -3px 0 0 #2a1c28, 0 3px 0 0 #2a1c28, -3px 0 0 0 #2a1c28, 3px 0 0 0 #2a1c28, inset -3px -3px 0 0 #c45a5a; }
+.quiz-opciones { gap: 14px; }
+.quiz-feedback { font-size: 20px; margin-top: 18px; }
+.quiz-cerrar { cursor: pointer; margin-top: 8px; }
