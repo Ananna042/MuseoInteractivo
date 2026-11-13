@@ -121,22 +121,23 @@ export const CONTENIDO = {
   },
 
 
-    // ---------------- OBRA 7 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
+ 
   7: {
-    titulo: `Paisaje junto al río`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1900`,
+    titulo: `Nubes en la sierra`,
+    autor: `Navazio, Walter de`,
+    origen: `División de Artes Plásticas y Exp. Dir. Gral de Cultura`,
+    fecha: `c. 1915`,
     periodo: `Arte Siglo XIX (1800-1910)`,
-    escuela: `Europea S.XIX`,
+    escuela: `Argentina S.XIX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Impresionismo`,
-    genero: `Paisaje`,
-    soporte: `Sobre tela`,
-    medidas: `65 x 90 cm.`,
+    estilo: `postimpresionismo`,
+    genero: `paisaje`,
+    soporte: `sobre tela`,
+    medidas: `69,5 x 79 cm`,
   },
+ 
+
 
   // ---------------- OBRA 8 ----------------
   8: 
@@ -333,209 +334,203 @@ export const CONTENIDO = {
     medidas: `55 x 46 cm.`,
   },
 
+
+
+
+
+
   // ---------------- OBRA 20 ----------------
   20: {
-    titulo:  `La Coiffure (El peinado)`,
-    autor:   `Morisot, Berthe Marie Pauline`,
-    origen:  `Legado Zuberbühler de Aceval, 1964`,
-    fecha:   `1894`,
-    periodo: 'Arte Siglo XIX (1800-1910)', 
-    escuela: `Francesa S.XIX`,
-    tecnica: `Óleo`, 
-    objeto:  `Pintura`,
-    estilo:  `Impresionismo`, 
-    genero:  `Costumbres`,
-    soporte: `Sobre tela`, 
-    medidas: `55 x 46 cm.`,
+    titulo: `Adan y Eva Nº 2`,
+    autor: `Deira, Ernesto`,
+    origen: `Donación Fundación Antorchas, 1989`,
+    fecha: `1963`,
+    periodo: `Arte Siglo XX - XXI (1945-actualidad)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo, esmalte sintético`,
+    objeto: `Pintura`,
+    estilo: `nueva figuración`,
+    genero: `social`,
+    soporte: `Sobre tela`,
+    medidas: `195 x 260 cm`,
   },
-
-
-
+ 
   // ---------------- OBRA 21 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   21: {
-    titulo: `Atardecer en el campo`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1910`,
-    periodo: `Arte Siglo XX (1910-1945)`,
-    escuela: `Argentina S.XX`,
+    titulo: `Músicos ambulantes`,
+    autor: `Favretto, Giacomo`,
+    origen: `Del Valle, Julia Tejedor de (Sucesión Del Valle, Aristóbulo)`,
+    fecha: `ca. 1881-1883`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Italiana S.XIX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Postimpresionismo`,
-    genero: `Paisaje`,
+    estilo: `naturalismo, preciosismo`,
+    genero: `costumbres`,
     soporte: `Sobre tela`,
-    medidas: `70 x 90 cm.`,
+    medidas: `93,5 x 150,5 cm.`,
   },
-
+ 
   // ---------------- OBRA 22 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   22: {
-    titulo: `Retrato de una joven`,
-    autor: `Autor desconocido`,
-    origen: `Donación particular`,
-    fecha: `ca. 1920`,
-    periodo: `Arte Siglo XX (1910-1945)`,
-    escuela: `Francesa S.XX`,
+    titulo: `Le bain de Vénus (El baño de Venus)`,
+    autor: `Redon, Odilon`,
+    origen: `Rodríguez Pividal, Juan Carlos`,
+    fecha: `ca. 1908-1913`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Francesa S.XIX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Figuración`,
-    genero: `Retrato`,
-    soporte: `Sobre tela`,
-    medidas: `80 x 60 cm.`,
+    estilo: `figuración, simbolismo`,
+    genero: `mitológico`,
+    soporte: `Sobre tabla`,
+    medidas: `35 x 28 cm.`,
   },
-
+ 
   // ---------------- OBRA 23 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   23: {
-    titulo: `Naturaleza muerta con flores`,
-    autor: `Autor desconocido`,
-    origen: `Adquisición particular`,
-    fecha: `ca. 1930`,
-    periodo: `Arte Siglo XX (1910-1945)`,
-    escuela: `Argentina S.XX`,
+    titulo: `Violettes et azalées (Violetas y azaleas)`,
+    autor: `Fantin Latour, Ignace Henri`,
+    origen: `Misión Schiaffino (París)`,
+    fecha: `1875`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Francesa S.XIX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Realismo`,
-    genero: `Naturaleza muerta`,
+    estilo: `naturalismo`,
+    genero: `naturaleza muerta`,
     soporte: `Sobre tela`,
-    medidas: `60 x 75 cm.`,
+    medidas: `51,5 x 58 cm. - Marco: 72 x 78,5 x 7 cm.`,
   },
-
+ 
   // ---------------- OBRA 24 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   24: {
-    titulo: `La plaza del pueblo`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1940`,
+    titulo: `Julieta Courbet a la edad de diez años`,
+    autor: `Courbet, Gustave`,
+    origen: `Donación Mercedes Santamarina, 1970`,
+    fecha: `ca. 1841`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Francesa S.XIX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `naturalismo, realismo`,
+    genero: `retrato`,
+    soporte: `sobre tela`,
+    medidas: `24,5 x 19 cm. - Marco: 42 x 36,5 x 6,5 cm.`,
+  },
+ 
+  // ---------------- OBRA 25 ----------------
+  25: {
+    titulo: `Intimidad de un tímido`,
+    autor: `De la Vega, Jorge`,
+    origen: `Donación Asociación Amigos del Museo Nacional de Bellas Artes - AAMNBA, 1981`,
+    fecha: `1963`,
+    periodo: `Arte Siglo XX - XXI (1945-actualidad)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo, telas encoladas, pedrería`,
+    objeto: `Pintura`,
+    estilo: `nueva figuración`,
+    genero: `onírico, fantástico`,
+    soporte: `Sobre tela`,
+    medidas: `260 x 194,8 cm.`,
+  },
+ 
+  // ---------------- OBRA 26 ----------------
+  26: {
+    titulo: `Calle de La Boca ó Calle Magallanes`,
+    autor: `Cúnsolo, Victor`,
+    origen: `María Luisa Boucau de Cires`,
+    fecha: `1930`,
     periodo: `Arte Siglo XX (1910-1945)`,
     escuela: `Argentina S.XX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Realismo`,
-    genero: `Paisaje urbano`,
-    soporte: `Sobre tela`,
-    medidas: `75 x 100 cm.`,
+    estilo: `figuración, metafísica`,
+    genero: `paisaje urbano, escuela de la Boca`,
+    soporte: `Sobre cartón`,
+    medidas: `70 x 80 cm.`,
   },
-
-  // ---------------- OBRA 25 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
-  25: {
-    titulo: `Composición geométrica`,
-    autor: `Autor desconocido`,
-    origen: `Donación particular`,
-    fecha: `ca. 1950`,
-    periodo: `Arte Siglo XX (1945-1970)`,
-    escuela: `Argentina S.XX`,
-    tecnica: `Óleo`,
-    objeto: `Pintura`,
-    estilo: `Abstracción geométrica`,
-    genero: `Abstracto`,
-    soporte: `Sobre tela`,
-    medidas: `80 x 80 cm.`,
-  },
-
-  // ---------------- OBRA 26 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
-  26: {
-    titulo: `Figuras en el jardín`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1955`,
-    periodo: `Arte Siglo XX (1945-1970)`,
-    escuela: `Europea S.XX`,
-    tecnica: `Óleo`,
-    objeto: `Pintura`,
-    estilo: `Expresionismo`,
-    genero: `Costumbres`,
-    soporte: `Sobre tela`,
-    medidas: `90 x 70 cm.`,
-  },
-
+ 
   // ---------------- OBRA 27 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   27: {
-    titulo: `Puerto al amanecer`,
-    autor: `Autor desconocido`,
-    origen: `Adquisición particular`,
-    fecha: `ca. 1960`,
-    periodo: `Arte Siglo XX (1945-1970)`,
-    escuela: `Argentina S.XX`,
+    titulo: `Procesión sorprendida por la lluvia`,
+    autor: `Fortuny y Marsal, Mariano`,
+    origen: `Piñero, Parmenio T.`,
+    fecha: `1867-1868`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Española S.XIX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Realismo`,
-    genero: `Paisaje`,
+    estilo: `naturalismo, preciosismo`,
+    genero: `costumbres`,
     soporte: `Sobre tela`,
-    medidas: `65 x 95 cm.`,
+    medidas: `63 x 102 cm. - Marco: 101,5 x 140 cm.`,
   },
-
+ 
   // ---------------- OBRA 28 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   28: {
-    titulo: `Mujer junto a la ventana`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1970`,
-    periodo: `Arte Siglo XX (1945-1970)`,
-    escuela: `Argentina S.XX`,
-    tecnica: `Acrílico`,
+    titulo: `Las parvas (la pampa de hoy)`,
+    autor: `Malharro, Martín`,
+    origen: `-`,
+    fecha: `1911`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Argentina S.XIX y S.XX`,
+    tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Figuración`,
-    genero: `Retrato`,
-    soporte: `Sobre tela`,
-    medidas: `100 x 70 cm.`,
+    estilo: `impresionismo`,
+    genero: `paisaje`,
+    soporte: `sobre tela`,
+    medidas: `65,5 x 82 cm.`,
   },
-
+ 
   // ---------------- OBRA 29 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   29: {
-    titulo: `Paisaje de montaña`,
-    autor: `Autor desconocido`,
-    origen: `Donación particular`,
-    fecha: `ca. 1980`,
-    periodo: `Arte Siglo XX (1970-2000)`,
+    titulo: `Mañana de invierno`,
+    autor: `Panozzi, Américo`,
+    origen: `Adquisición Primer Premio Salón Nacional de Artes Plásticas, 1926`,
+    fecha: `-`,
+    periodo: `Arte Siglo XX (1910-1945)`,
     escuela: `Argentina S.XX`,
     tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Figuración`,
-    genero: `Paisaje`,
-    soporte: `Sobre tela`,
-    medidas: `80 x 110 cm.`,
+    estilo: `-`,
+    genero: `-`,
+    soporte: `sobre tela`,
+    medidas: `76,8 x 100,5 cm.`,
   },
-
+ 
   // ---------------- OBRA 30 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   30: {
-    titulo: `Composición en azul`,
-    autor: `Autor desconocido`,
-    origen: `Colección particular`,
-    fecha: `ca. 1990`,
-    periodo: `Arte Siglo XX (1970-2000)`,
+    titulo: `Nocturno abstracto o Abstracción en azul y rojo`,
+    autor: `Del Prete, Juan`,
+    origen: `Adquisición a Juan Del Prete, 1964`,
+    fecha: `1959`,
+    periodo: `Arte Siglo XX - XXI (1945-actualidad)`,
     escuela: `Argentina S.XX`,
-    tecnica: `Acrílico`,
+    tecnica: `Óleo`,
     objeto: `Pintura`,
-    estilo: `Abstracción`,
-    genero: `Abstracto`,
-    soporte: `Sobre tela`,
-    medidas: `90 x 90 cm.`,
+    estilo: `abstracción`,
+    genero: `abstracto`,
+    soporte: `sobre tela`,
+    medidas: `165,5 x 271 cm.`,
   },
-
+ 
   // ---------------- OBRA 31 ----------------
-  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   31: {
-    titulo: `Memorias de la ciudad`,
-    autor: `Autor desconocido`,
-    origen: `Adquisición particular`,
-    fecha: `ca. 2000`,
-    periodo: `Arte Siglo XXI`,
-    escuela: `Argentina S.XXI`,
-    tecnica: `Técnica mixta`,
+    titulo: `Señora Manuela Suárez Lastra de Garmendia`,
+    autor: `Pellegrini, Carlos Enrique`,
+    origen: `Legado Ana Pellegrini de Galeano, 1920`,
+    fecha: `-`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Argentina S.XIX`,
+    tecnica: `Acuarela`,
     objeto: `Pintura`,
-    estilo: `Contemporáneo`,
-    genero: `Paisaje urbano`,
-    soporte: `Sobre tela`,
-    medidas: `100 x 120 cm.`,
+    estilo: `-`,
+    genero: `retrato femenino`,
+    soporte: `sobre papel`,
+    medidas: `34 x 41 cm.`,
   },
+ 
 
+ 
 };

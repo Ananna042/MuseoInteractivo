@@ -31,33 +31,45 @@ export const PREGUNTAS_OBRAS = {
   // ---------------- 1 · Le Moulin de la Galette ----------------
   1: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Monet, Claude", "Cézanne, Paul"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Cubismo", "Barroco"] },
+      incorrectas: ["Cézanne, Paul", "Renoir, Pierre-Auguste"] },
+    { campo: "soporte", texto: "¿Sobre qué soporte está pintada «{titulo}»?",
+      incorrectas: ["Sobre tabla", "Sobre cartón"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca 1910-1912", "ca 1790-1792"] },
   ],
 
   // ---------------- 2 · La berge de La Seine ----------------
   2: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Sisley, Alfred", "Renoir, Pierre-Auguste"] },
+      incorrectas: ["Pissarro, Camille", "Degas, Edgar"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1865", "1897"] },
+      incorrectas: ["1925", "1760"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Española S.XIX", "Italiana S.XIX"] },
   ],
 
   // ---------------- 3 · Jesus en el Huerto de los Olivos ----------------
   3: [
-    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Velázquez, Diego", "Goya y Lucientes, Francisco"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo", "Cubismo"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje", "Retrato"] },
+      incorrectas: ["Retrato", "Paisaje"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Italiana S.XVII", "Flamenca S.XVII"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1700-1707", "1500-1507"] },
   ],
 
   // ---------------- 4 · Sin pan y sin trabajo ----------------
   4: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Berni, Antonio", "Pueyrredón, Prilidiano"] },
-    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
-      incorrectas: ["Francesa S.XIX", "Española S.XVII"] },
+      incorrectas: ["Sívori, Eduardo", "Schiaffino, Eduardo"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1921", "1867"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Paisaje, retrato", "Naturaleza muerta, mitológico"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo, luminismo", "Barroco, manierismo"] },
   ],
 
   // ---------------- 5 · En la costa de Valencia ----------------
@@ -65,79 +77,101 @@ export const PREGUNTAS_OBRAS = {
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
       incorrectas: ["Zuloaga, Ignacio", "Rusiñol, Santiago"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1871", "1924"] },
+      incorrectas: ["1920", "1872"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, religioso", "Naturaleza muerta, histórico"] },
   ],
 
   // ---------------- 6 · La vuelta del Malón ----------------
   6: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Blanes, Juan Manuel", "Quinquela Martín, Benito"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Impresionismo, simbolismo", "Cubismo, futurismo"] },
+      incorrectas: ["Pueyrredón, Prilidiano", "Blanes, Juan Manuel"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1935", "1860"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, mitológico", "Paisaje, social"] },
   ],
 
-  // ---------------- 7 · Paisaje junto al río ----------------
+  // ---------------- 7 · Nubes en la sierra ----------------
   7: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Giudici, Reynaldo", "Sívori, Eduardo"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["c. 1950", "c. 1850"] },
     { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Cubismo", "Barroco"] },
+      incorrectas: ["Barroco", "Surrealismo"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Retrato", "Naturaleza muerta"] },
+      incorrectas: ["Retrato", "Religioso"] },
   ],
 
   // ---------------- 8 · Quietud del lago ----------------
   8: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Fader, Fernando", "Spilimbergo, Lino Enea"] },
+      incorrectas: ["Spilimbergo, Lino Enea", "Pettoruti, Emilio"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1898", "1946"] },
+      incorrectas: ["1951", "1888"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Barroco", "Surrealismo"] },
   ],
 
   // ---------------- 9 · Al solcito ----------------
   9: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Quirós, Cesáreo Bernaldo de", "Pettoruti, Emilio"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Barroco", "Surrealismo"] },
+      incorrectas: ["Spilimbergo, Lino Enea", "Quinquela Martín, Benito"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, religioso", "Naturaleza muerta, mitológico"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Francesa S.XX", "Italiana S.XX"] },
   ],
 
   // ---------------- 10 · Le Pont d´Argenteuil (El Puente de Argenteuil) ----------------
   10: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Renoir, Pierre-Auguste", "Degas, Edgar"] },
+      incorrectas: ["Pissarro, Camille", "Manet, Édouard"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1862", "1899"] },
+      incorrectas: ["1912", "1840"] },
+    { campo: "origen", texto: "¿Cómo llegó «{titulo}» al museo?",
+      incorrectas: ["Compra del museo, 1948", "Donación Hirsch, 1983"] },
   ],
 
   // ---------------- 11 · Los Ópalos ----------------
   11: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Zuloaga, Ignacio", "Rusiñol, Santiago"] },
+      incorrectas: ["Nonell, Isidre", "Casas, Ramón"] },
     { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
-      incorrectas: ["Argentina S.XX", "Francesa S.XIX"] },
+      incorrectas: ["Francesa S.XX", "Argentina S.XX"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Naturaleza muerta"] },
   ],
 
   // ---------------- 12 · El Riachuelo ----------------
   12: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Quinquela Martín, Benito", "Spilimbergo, Lino Enea"] },
+      incorrectas: ["Quinquela Martín, Benito", "Pettoruti, Emilio"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje rural", "Retrato"] },
+      incorrectas: ["Retrato", "Naturaleza muerta"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1952", "1881"] },
   ],
 
   // ---------------- 13 · Pupo ----------------
   13: [
     { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
       incorrectas: ["Óleo", "Grabado"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Realismo, academicismo", "Impresionismo, luminismo"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Paisaje"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1965", "ca. 1880"] },
   ],
 
   // ---------------- 14 · La presentación ----------------
   14: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Quirós, Cesáreo Bernaldo de", "Pettoruti, Emilio"] },
+      incorrectas: ["Gramajo Gutiérrez, Alfredo", "Quirós, Cesáreo Bernaldo de"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1895", "1936"] },
+      incorrectas: ["1943", "1890"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Realismo, naturalismo", "Abstracción, constructivismo"] },
   ],
 
   // ---------------- 15 · Ruehende Schiffe (Barcos en reposo) ----------------
@@ -146,192 +180,280 @@ export const PREGUNTAS_OBRAS = {
       incorrectas: ["Kandinsky, Wassily", "Mondrian, Piet"] },
     { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
       incorrectas: ["Óleo", "Acuarela"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Alemana S.XX", "Francesa S.XX"] },
   ],
 
   // ---------------- 16 · Retrato de Marguerite-Elisabeth Forest de Largillière y su hijo Nicolás ----------------
   16: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Rigaud, Hyacinthe", "Watteau, Jean-Antoine"] },
+      incorrectas: ["Rigaud, Hyacinthe", "Watteau, Antoine"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo", "Cubismo"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
       incorrectas: ["Paisaje", "Naturaleza muerta"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1850", "ca. 1590"] },
   ],
 
   // ---------------- 17 · La niña sentada ----------------
   17: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Pettoruti, Emilio", "Berni, Antonio"] },
+      incorrectas: ["Basaldúa, Héctor", "Spilimbergo, Lino Enea"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1905", "1952"] },
+      incorrectas: ["1952", "1905"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Abstracción, geometría", "Naturalismo, realismo"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Paisaje", "Religioso"] },
   ],
 
   // ---------------- 18 · Bords de rivière (Orillas del río) ----------------
   18: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Pissarro, Camille", "Renoir, Pierre-Auguste"] },
+      incorrectas: ["Pissarro, Camille", "Degas, Edgar"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1851", "1899"] },
+      incorrectas: ["1912", "1840"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Naturaleza muerta"] },
   ],
 
   // ---------------- 19 · La Coiffure (El peinado) ----------------
   19: [
     { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
-      incorrectas: ["Cassatt, Mary Stevenson", "Gonzalès, Eva"] },
+      incorrectas: ["Cassatt, Mary", "Gonzalès, Eva"] },
     { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["1872", "1911"] },
+      incorrectas: ["1921", "1860"] },
+    { campo: "origen", texto: "¿Cómo llegó «{titulo}» al museo?",
+      incorrectas: ["Donación Mercedes Santamarina, 1970", "Adquisición Torcuato Di Tella, 1971"] },
   ],
 
-  // ---------------- 20 · La Coiffure (El peinado) ----------------
+  // ---------------- 20 · Adan y Eva Nº 2 ----------------
   20: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Noé, Luis Felipe", "Macció, Rómulo"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1928", "1991"] },
+    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
+      incorrectas: ["Acuarela, tinta", "Témpera, carbonilla"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo", "Surrealismo"] },
+  ],
+
+  // ---------------- 21 · Músicos ambulantes ----------------
+  21: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Boldini, Giovanni", "Segantini, Giovanni"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Española S.XIX", "Francesa S.XIX"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1920-1922", "ca. 1750-1752"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Religioso"] },
+  ],
+
+  // ---------------- 22 · Le bain de Vénus (El baño de Venus) ----------------
+  22: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Moreau, Gustave", "Puvis de Chavannes, Pierre"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Paisaje"] },
+    { campo: "soporte", texto: "¿Sobre qué soporte está pintada «{titulo}»?",
+      incorrectas: ["Sobre tela", "Sobre papel"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1850-1853", "ca. 1950-1953"] },
+  ],
+
+  // ---------------- 23 · Violettes et azalées (Violetas y azaleas) ----------------
+  23: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Manet, Édouard", "Cézanne, Paul"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Paisaje"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1910", "1840"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Cubismo", "Barroco"] },
+  ],
+
+  // ---------------- 24 · Julieta Courbet a la edad de diez años ----------------
+  24: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Millet, Jean-François", "Daumier, Honoré"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Paisaje", "Mitológico"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1900", "ca. 1780"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo, luminismo", "Barroco, manierismo"] },
+  ],
+
+  // ---------------- 25 · Intimidad de un tímido ----------------
+  25: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Noé, Luis Felipe", "Macció, Rómulo"] },
+    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
+      incorrectas: ["Óleo, esmalte sintético", "Acuarela, tinta china"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, histórico", "Paisaje, costumbres"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1928", "1991"] },
+  ],
+
+  // ---------------- 26 · Calle de La Boca ó Calle Magallanes ----------------
+  26: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Quinquela Martín, Benito", "Lacámera, Fortunato"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1955", "1902"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, costumbres", "Naturaleza muerta, mitológico"] },
+    { campo: "soporte", texto: "¿Sobre qué soporte está pintada «{titulo}»?",
+      incorrectas: ["Sobre tela", "Sobre tabla"] },
+  ],
+
+  // ---------------- 27 · Procesión sorprendida por la lluvia ----------------
+  27: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Madrazo, Raimundo de", "Rosales, Eduardo"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1910-1911", "1790-1791"] },
+    { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
+      incorrectas: ["Italiana S.XIX", "Francesa S.XIX"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Paisaje"] },
+  ],
+
+  // ---------------- 28 · Las parvas (la pampa de hoy) ----------------
+  28: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Sívori, Eduardo", "Fader, Fernando"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1945", "1880"] },
     { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
       incorrectas: ["Cubismo", "Barroco"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje", "Retrato"] },
-  ],
-
-  // ---------------- 21 · Atardecer en el campo ----------------
-  21: [
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Barroco", "Surrealismo"] },
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
       incorrectas: ["Retrato", "Naturaleza muerta"] },
   ],
 
-  // ---------------- 22 · Retrato de una joven ----------------
-  22: [
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje", "Naturaleza muerta"] },
+  // ---------------- 29 · Mañana de invierno ----------------
+  29: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Quirós, Cesáreo Bernaldo de", "Pettoruti, Emilio"] },
+    { campo: "origen", texto: "¿Cómo llegó «{titulo}» al museo?",
+      incorrectas: ["Adquisición Segundo Premio Salón Nacional de Artes Plásticas, 1926", "Donación Mercedes Santamarina, 1970"] },
     { campo: "escuela", texto: "¿A qué escuela pertenece «{titulo}»?",
-      incorrectas: ["Argentina S.XX", "Española S.XVIII"] },
+      incorrectas: ["Francesa S.XX", "Italiana S.XX"] },
   ],
 
-  // ---------------- 23 · Naturaleza muerta con flores ----------------
-  23: [
+  // ---------------- 30 · Nocturno abstracto o Abstracción en azul y rojo ----------------
+  30: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Maldonado, Tomás", "Hlito, Alfredo"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1912", "1985"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Impresionismo", "Realismo"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
       incorrectas: ["Retrato", "Paisaje"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Impresionismo", "Cubismo"] },
   ],
 
-  // ---------------- 24 · La plaza del pueblo ----------------
-  24: [
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje rural", "Retrato"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Cubismo", "Surrealismo"] },
-  ],
-
-  // ---------------- 25 · Composición geométrica ----------------
-  25: [
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Realismo", "Impresionismo"] },
-    { campo: "periodo", texto: "¿A qué período corresponde «{titulo}»?",
-      incorrectas: ["Arte Siglo XX (1910-1945)", "Arte Siglo XX (1970-2000)"] },
-  ],
-
-  // ---------------- 26 · Figuras en el jardín ----------------
-  26: [
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Realismo", "Cubismo"] },
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje urbano", "Retrato"] },
-  ],
-
-  // ---------------- 27 · Puerto al amanecer ----------------
-  27: [
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Retrato", "Naturaleza muerta"] },
-    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
-      incorrectas: ["ca. 1930", "ca. 1990"] },
-  ],
-
-  // ---------------- 28 · Mujer junto a la ventana ----------------
-  28: [
-    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
-      incorrectas: ["Óleo", "Acuarela"] },
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Paisaje", "Naturaleza muerta"] },
-  ],
-
-  // ---------------- 29 · Paisaje de montaña ----------------
-  29: [
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Retrato", "Naturaleza muerta"] },
-    { campo: "periodo", texto: "¿A qué período corresponde «{titulo}»?",
-      incorrectas: ["Arte Siglo XX (1945-1970)", "Arte Siglo XXI"] },
-  ],
-
-  // ---------------- 30 · Composición en azul ----------------
-  30: [
+  // ---------------- 31 · Señora Manuela Suárez Lastra de Garmendia ----------------
+  31: [
+    { campo: "autor", texto: "¿Quién pintó «{titulo}»?",
+      incorrectas: ["Sívori, Eduardo", "Pueyrredón, Prilidiano"] },
     { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
       incorrectas: ["Óleo", "Témpera"] },
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Realismo", "Barroco"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato masculino", "Paisaje"] },
+    { campo: "soporte", texto: "¿Sobre qué soporte está pintada «{titulo}»?",
+      incorrectas: ["Sobre tela", "Sobre tabla"] },
   ],
 
-  // ---------------- 31 · Memorias de la ciudad ----------------
-  31: [
-    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
-      incorrectas: ["Óleo", "Acuarela"] },
-    { campo: "periodo", texto: "¿A qué período corresponde «{titulo}»?",
-      incorrectas: ["Arte Siglo XX (1970-2000)", "Arte Siglo XIX (1800-1910)"] },
-  ],
 };
+
+// =====================================================================
+//  ESCULTURAS
+// =====================================================================
 
 export const PREGUNTAS_ESCULTURAS = {
 
-  // ---------------- 1 · Cabeza de niña ----------------
+  // ---------------- 1 · Niña con trenzas ----------------
   1: [
-    { campo: "objeto", texto: "¿Qué representa «{titulo}»?",
-      incorrectas: ["Figura de cuerpo entero", "Un animal"] },
-    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
-      incorrectas: ["Fundición", "Talla directa en piedra"] },
-  ],
-
-  // ---------------- 2 · Composición abstracta ----------------
-  2: [
-    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
-      incorrectas: ["Figurativo", "Realista"] },
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Mora, Lola", "Yrurtia, Rogelio"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1890", "ca. 1720"] },
     { campo: "soporte", texto: "¿De qué material está hecha «{titulo}»?",
-      incorrectas: ["Mármol", "Madera"] },
+      incorrectas: ["Mármol", "Bronce"] },
   ],
 
-  // ---------------- 3 · Busto de hombre barbudo ----------------
+  // ---------------- 2 · Triangulación ----------------
+  2: [
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Badii, Libero", "Iommi, Enio"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Realista", "Figurativo"] },
+    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
+      incorrectas: ["Bronce", "Mármol"] },
+  ],
+
+  // ---------------- 3 · Cabeza de Septimio Severo ----------------
   3: [
-    { campo: "objeto", texto: "¿Qué representa «{titulo}»?",
-      incorrectas: ["Figura ecuestre", "Manos humanas"] },
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Rodin, René François Auguste", "Cafferata, Francisco"] },
+    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
+      incorrectas: ["Modelado, vaciado", "Talla en madera, policromía"] },
     { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Mitológico", "Escultura abstracta"] },
+      incorrectas: ["Figura ecuestre", "Torso femenino"] },
   ],
 
-  // ---------------- 4 · Las manos ----------------
+  // ---------------- 4 · Estudio para manos [Estudio para El secreto] ----------------
   4: [
-    { campo: "objeto", texto: "¿Qué representa «{titulo}»?",
-      incorrectas: ["Busto humano", "Figura ecuestre"] },
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Claudel, Camille Rosalie", "Bourdelle, Émile Antoine"] },
+    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
+      incorrectas: ["Yeso patinado", "Mármol pulido"] },
+    { campo: "origen", texto: "¿Cómo llegó «{titulo}» al museo?",
+      incorrectas: ["Donación Hirsch, 1983", "Adquisición Torcuato Di Tella, 1971"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato", "Figura ecuestre"] },
+  ],
+
+  // ---------------- 5 · Diana ----------------
+  5: [
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Bartholdi, Frédéric Auguste", "Carpeaux, Jean-Baptiste"] },
+    { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
+      incorrectas: ["Cubista", "Barroco"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato, religioso", "Paisaje, costumbres"] },
+    { campo: "soporte", texto: "¿De qué material está hecha «{titulo}»?",
+      incorrectas: ["Mármol blanco", "Yeso policromado"] },
+  ],
+
+  // ---------------- 6 · Busto de esclavo ----------------
+  6: [
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Correa Morales, Lucio", "Mora, Lola"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["ca. 1950", "ca. 1720"] },
+    { campo: "soporte", texto: "¿De qué material está hecha «{titulo}»?",
+      incorrectas: ["Mármol", "Yeso"] },
+    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
+      incorrectas: ["Retrato oficial", "Mitológico"] },
+  ],
+
+  // ---------------- 7 · Jinete a caballo ----------------
+  7: [
+    { campo: "autor", texto: "¿Quién hizo «{titulo}»?",
+      incorrectas: ["Moore, Henry", "Giacometti, Alberto"] },
+    { campo: "fecha", texto: "¿De qué fecha es «{titulo}»?",
+      incorrectas: ["1912", "1988"] },
+    { campo: "origen", texto: "¿Cómo llegó «{titulo}» al museo?",
+      incorrectas: ["Donación Mercedes Santamarina, 1970", "Donación Hirsch, 1983"] },
     { campo: "estilo", texto: "¿A qué estilo pertenece «{titulo}»?",
       incorrectas: ["Abstracto", "Cubista"] },
   ],
 
-  // ---------------- 5 · Diana con la luna ----------------
-  5: [
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Retrato", "Religioso"] },
-    { campo: "objeto", texto: "¿Qué representa «{titulo}»?",
-      incorrectas: ["Busto humano", "Figura ecuestre"] },
-  ],
-
-  // ---------------- 6 · Busto de bronce ----------------
-  6: [
-    { campo: "soporte", texto: "¿De qué material está hecha «{titulo}»?",
-      incorrectas: ["Mármol", "Yeso"] },
-    { campo: "tecnica", texto: "¿Qué técnica se usó en «{titulo}»?",
-      incorrectas: ["Talla directa en piedra", "Ensamblaje de piezas"] },
-  ],
-
-  // ---------------- 7 · Caballo y jinete ----------------
-  7: [
-    { campo: "objeto", texto: "¿Qué representa «{titulo}»?",
-      incorrectas: ["Busto humano", "Manos humanas"] },
-    { campo: "genero", texto: "¿A qué género pertenece «{titulo}»?",
-      incorrectas: ["Retrato", "Mitológico"] },
-  ],
 };
