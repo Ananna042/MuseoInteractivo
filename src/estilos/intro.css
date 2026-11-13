@@ -1,0 +1,119 @@
+/* =========================
+   PANTALLA DE INICIO (PRESS START)
+   Todo lleva el prefijo .intro para no pisar el resto del juego.
+========================= */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;                       /* por encima de todo, incluso de Game Over */
+  overflow: hidden;
+  background: #1b1530 url('/intro-fondo.png') center / cover no-repeat;
+  image-rendering: pixelated;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* velo oscuro suave para que se lea el texto */
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(20,10,30,.55) 0%, rgba(20,10,30,.25) 60%, rgba(20,10,30,.1) 100%);
+  pointer-events: none;
+}
+
+.intro-contenido {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.intro-subtitulo {
+  font-size: clamp(14px, 3vw, 26px);
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 0 #1b1530, -2px -2px 0 #1b1530, 2px -2px 0 #1b1530, -2px 2px 0 #1b1530;
+}
+
+/* ---------- Título rojo ---------- */
+.intro-titulo-caja { position: relative; padding: 20px 40px; }
+
+.intro-titulo {
+  font-size: clamp(48px, 14vw, 120px);
+  line-height: 1.15;
+  margin: 0;
+  color: #ff2a2a;
+  text-shadow: 4px 4px 0 #b00d1c, 8px 8px 0 #5a0710;
+  -webkit-text-stroke: 3px #4a0409;
+  paint-order: stroke fill;
+}
+.intro-fila { display: block; white-space: nowrap; }
+.intro-l { display: inline-block; }
+
+/* letras que flotan y otras no, intercaladas */
+.intro-fila:nth-child(1) .intro-l:nth-child(odd)  { animation: intro-flotar 2.4s ease-in-out infinite; }
+.intro-fila:nth-child(2) .intro-l:nth-child(even) { animation: intro-flotar 2.4s ease-in-out infinite; animation-delay: .6s; }
+
+@keyframes intro-flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* ---------- Destellos ---------- */
+.intro-destello {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  animation: intro-brillo 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+.intro-destello::before, .intro-destello::after {
+  content: "";
+  position: absolute;
+  background: #fff7a8;
+  box-shadow: 0 0 6px 2px #ffd400;
+}
+.intro-destello::before { left: calc(50% - 2px); top: 0; width: 4px; height: 100%; }
+.intro-destello::after  { top: calc(50% - 2px); left: 0; height: 4px; width: 100%; }
+
+@keyframes intro-brillo {
+  0%, 70%, 100% { opacity: 0;  transform: scale(.3) rotate(0deg); }
+  80%           { opacity: 1;  transform: scale(1.1) rotate(45deg); }
+  90%           { opacity: .6; transform: scale(.7) rotate(90deg); }
+}
+.d1 { left: 2%;   top: 12%;   animation-delay: 0s; }
+.d2 { left: 28%;  top: -2%;   animation-delay: .7s;  width: 16px; height: 16px; }
+.d3 { right: 6%;  top: 8%;    animation-delay: 1.4s; }
+.d4 { left: 8%;   bottom: 6%; animation-delay: 2s;   width: 16px; height: 16px; }
+.d5 { right: 22%; bottom: 0%; animation-delay: .35s; }
+.d6 { left: 52%;  top: 40%;   animation-delay: 1.1s; width: 14px; height: 14px; }
+.d7 { right: 0%;  top: 55%;   animation-delay: 1.8s; width: 16px; height: 16px; }
+
+/* ---------- Textos de abajo ---------- */
+.intro-press {
+  font-size: clamp(10px, 2.2vw, 18px);
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #1b1530, -1px -1px 0 #1b1530, 1px -1px 0 #1b1530, -1px 1px 0 #1b1530;
+  animation: intro-titilar 1s steps(1) infinite;
+}
+@keyframes intro-titilar { 50% { opacity: 0; } }
+
+.intro-credito {
+  margin-top: 12px;
+  font-size: clamp(8px, 1.6vw, 13px);
+  color: #ffd400;
+  line-height: 1.8;
+  text-shadow: 2px 2px 0 #3a2a00, -1px -1px 0 #3a2a00, 1px -1px 0 #3a2a00, -1px 1px 0 #3a2a00;
+}
+
+/* fundido a negro al empezar */
+.intro.saliendo { animation: intro-salir .5s ease-in forwards; pointer-events: none; }
+@keyframes intro-salir { to { opacity: 0; } }

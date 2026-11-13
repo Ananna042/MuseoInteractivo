@@ -3,7 +3,7 @@
 //
 //  Uso:
 //    mostrarPantalla({
-//      tono: "mal",                 // "mal" (rojo) o "bien" (verde/dorado)
+//      tono: "mal",                 // "mal" (rojo), "bien" (verde) o "victoria" (dorado con confeti)
 //      titulo: "GAME OVER",
 //      mensaje: "Te quedaste sin vidas.",
 //      detalle: "Nivel 1",          // opcional, línea chica
@@ -38,6 +38,20 @@ export function mostrarPantalla({
   overlay.querySelector(".pantalla-detalle").textContent = detalle;
   const btn = overlay.querySelector(".pantalla-boton");
   btn.textContent = boton;
+
+  // victoria: lluvia de confeti pixelado detrás de la caja
+  if (tono === "victoria") {
+    const colores = ["#ffd34d", "#ff6b6b", "#5fd38d", "#6cb8ff", "#ff9ee0", "#ffffff"];
+    for (let i = 0; i < 36; i++) {
+      const c = document.createElement("span");
+      c.className = "confeti";
+      c.style.left = `${Math.random() * 100}%`;
+      c.style.background = colores[i % colores.length];
+      c.style.animationDuration = `${2.2 + Math.random() * 2.4}s`;
+      c.style.animationDelay = `${-Math.random() * 4}s`;
+      overlay.appendChild(c);
+    }
+  }
 
   let usada = false;
   function activar() {

@@ -147,6 +147,11 @@ export function crearEncuentroNPC({
       enQuiz = false;
       requestAnimationFrame(revisar);
     },
+    reiniciar() {            // al cambiar de nivel: las preguntas vuelven a estar disponibles
+      yaUsadas.clear();
+      objetivo = null;
+      enQuiz = false;
+    },
     cancelar() {
       cancelado = true;
       overlayActual?.remove();

@@ -31,7 +31,7 @@ export function crearMision({
   alPerder = () => {},
   alCompletarObservacion = () => {},
 } = {}) {
-  const config = niveles.find(n => n.numero === nivel);
+  let config = niveles.find(n => n.numero === nivel);
 
   // ---------- estado ----------
   let estado = "espera";            // espera | observacion | busqueda | quiz | perdido
@@ -108,7 +108,7 @@ export function crearMision({
       urgente = s <= 10;
     } else if (estado === "busqueda") {
       const s = restante(finBusqueda);
-      const objetivoNPC = pista ? `¡Buscá a ${pista}!` : "¡Encontrá al NPC!";
+      const objetivoNPC = pista ? `¡Buscá ${pista}!` : "¡Encontrá al NPC!";
       cuerpo = `<div class="mision-objetivo">${objetivoNPC}</div>
                 <div class="mision-fila hecho"><span>Observación:</span><span>✓</span></div>
                 ${filaTiempo(s)}`;
@@ -222,6 +222,28 @@ export function crearMision({
       pintar();
     },
 
+    // pasa a otro nivel: borra lo observado y vuelve a la espera (después se llama a iniciar())
+    cargarNivel(numero) {
+      detenerTemporizadores();
+      config = niveles.find(n => n.numero === numero);
+      estado = "espera";
+      motivoDerrota = "";
+      pista = "";
+      vistas.obra.clear();
+      vistas.escultura.clear();
+      panel.classList.remove("abierto");
+    },
+
+    // niveles con 2 NPC: cuando termina el quiz del primero, arranca otra búsqueda de 30 s
+    siguienteBusqueda() {
+      estado = "busqueda";
+      finBusqueda = Date.now() + config.tiempoBusqueda * 1000;
+      if (!intervalo) intervalo = setInterval(tic, 250);
+      panel.classList.add("llamar");
+      pintar();
+    },
+
+    obtenerNivel: () => config.numero,
     obtenerEstado: () => estado,
     obtenerProgreso: () => ({ obras: contadas("obra"), esculturas: contadas("escultura") }),
     elemento: panel,

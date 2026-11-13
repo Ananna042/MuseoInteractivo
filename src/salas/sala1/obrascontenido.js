@@ -119,20 +119,23 @@ export const CONTENIDO = {
     soporte: `Sobre tela`, 
     medidas: `186,5 x 292 cm.`,
   },
-  // ---------------- OBRA 7 ----------------
-  7:  {
-    titulo:  `Nubes en la sierra`,
-    autor:   `Walter de Navazio`,
-    origen:  `División de Artes Plásticas y Exp. Dir. Gral de Cultura`,
-    fecha:   `c. 1915 `,
-    periodo: 'Arte Siglo XIX (1800-1910)', 
-    escuela: `Argentina S.XIX`,
-    tecnica: `Óleo`, 
-    objeto:  `Pintura`,
-    estilo:  `postimpresionismo`, 
-    genero:  `paisaje`,
-    soporte: `sobre tela `, 
-    medidas: `69,5 x 79 cm`,
+
+
+    // ---------------- OBRA 7 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
+  7: {
+    titulo: `Paisaje junto al río`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1900`,
+    periodo: `Arte Siglo XIX (1800-1910)`,
+    escuela: `Europea S.XIX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Impresionismo`,
+    genero: `Paisaje`,
+    soporte: `Sobre tela`,
+    medidas: `65 x 90 cm.`,
   },
 
   // ---------------- OBRA 8 ----------------
@@ -296,11 +299,12 @@ export const CONTENIDO = {
   },
 
   // ---------------- OBRA 18 ----------------
+
   18:  {
     titulo:  `Bords de rivière (Orillas del río)`,
     autor:   `Sisley, Alfred`,
     origen:  `Donación, Bemberg, María Luisa. 1985`,
-    fecha:   `-`,
+    fecha:   `1874`,
     periodo: 'Arte Siglo XX (1910-1945)', 
     escuela: `Francesa S.XIX`,
     tecnica: `Óleo`, 
@@ -310,6 +314,8 @@ export const CONTENIDO = {
     soporte: `Sobre tela`, 
     medidas: `66,4 x 91,8 cm. - Marco: 91 x 116 cm.`,
   },
+
+  
 
   // ---------------- OBRA 19 ----------------
   19: {
@@ -343,124 +349,193 @@ export const CONTENIDO = {
     medidas: `55 x 46 cm.`,
   },
 
+
+
   // ---------------- OBRA 21 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   21: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Atardecer en el campo`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1910`,
+    periodo: `Arte Siglo XX (1910-1945)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Postimpresionismo`,
+    genero: `Paisaje`,
+    soporte: `Sobre tela`,
+    medidas: `70 x 90 cm.`,
   },
 
   // ---------------- OBRA 22 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   22: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Retrato de una joven`,
+    autor: `Autor desconocido`,
+    origen: `Donación particular`,
+    fecha: `ca. 1920`,
+    periodo: `Arte Siglo XX (1910-1945)`,
+    escuela: `Francesa S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Figuración`,
+    genero: `Retrato`,
+    soporte: `Sobre tela`,
+    medidas: `80 x 60 cm.`,
   },
 
   // ---------------- OBRA 23 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   23: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Naturaleza muerta con flores`,
+    autor: `Autor desconocido`,
+    origen: `Adquisición particular`,
+    fecha: `ca. 1930`,
+    periodo: `Arte Siglo XX (1910-1945)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Realismo`,
+    genero: `Naturaleza muerta`,
+    soporte: `Sobre tela`,
+    medidas: `60 x 75 cm.`,
   },
 
   // ---------------- OBRA 24 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   24: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `La plaza del pueblo`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1940`,
+    periodo: `Arte Siglo XX (1910-1945)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Realismo`,
+    genero: `Paisaje urbano`,
+    soporte: `Sobre tela`,
+    medidas: `75 x 100 cm.`,
   },
 
   // ---------------- OBRA 25 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   25: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Composición geométrica`,
+    autor: `Autor desconocido`,
+    origen: `Donación particular`,
+    fecha: `ca. 1950`,
+    periodo: `Arte Siglo XX (1945-1970)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Abstracción geométrica`,
+    genero: `Abstracto`,
+    soporte: `Sobre tela`,
+    medidas: `80 x 80 cm.`,
   },
 
   // ---------------- OBRA 26 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   26: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Figuras en el jardín`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1955`,
+    periodo: `Arte Siglo XX (1945-1970)`,
+    escuela: `Europea S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Expresionismo`,
+    genero: `Costumbres`,
+    soporte: `Sobre tela`,
+    medidas: `90 x 70 cm.`,
   },
 
   // ---------------- OBRA 27 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   27: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Puerto al amanecer`,
+    autor: `Autor desconocido`,
+    origen: `Adquisición particular`,
+    fecha: `ca. 1960`,
+    periodo: `Arte Siglo XX (1945-1970)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Realismo`,
+    genero: `Paisaje`,
+    soporte: `Sobre tela`,
+    medidas: `65 x 95 cm.`,
   },
 
   // ---------------- OBRA 28 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   28: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Mujer junto a la ventana`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1970`,
+    periodo: `Arte Siglo XX (1945-1970)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Acrílico`,
+    objeto: `Pintura`,
+    estilo: `Figuración`,
+    genero: `Retrato`,
+    soporte: `Sobre tela`,
+    medidas: `100 x 70 cm.`,
   },
 
   // ---------------- OBRA 29 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   29: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Paisaje de montaña`,
+    autor: `Autor desconocido`,
+    origen: `Donación particular`,
+    fecha: `ca. 1980`,
+    periodo: `Arte Siglo XX (1970-2000)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Óleo`,
+    objeto: `Pintura`,
+    estilo: `Figuración`,
+    genero: `Paisaje`,
+    soporte: `Sobre tela`,
+    medidas: `80 x 110 cm.`,
   },
 
   // ---------------- OBRA 30 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   30: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Composición en azul`,
+    autor: `Autor desconocido`,
+    origen: `Colección particular`,
+    fecha: `ca. 1990`,
+    periodo: `Arte Siglo XX (1970-2000)`,
+    escuela: `Argentina S.XX`,
+    tecnica: `Acrílico`,
+    objeto: `Pintura`,
+    estilo: `Abstracción`,
+    genero: `Abstracto`,
+    soporte: `Sobre tela`,
+    medidas: `90 x 90 cm.`,
   },
 
   // ---------------- OBRA 31 ----------------
+  // ⚠️ INFORMACIÓN INVENTADA PROVISIONAL
   31: {
-    titulo: ``,
-    autor: ``,
-    origen: ``, fecha: ``,
-    periodo: ``, escuela: ``,
-    tecnica: ``, objeto: ``,
-    estilo: ``, genero: ``,
-    soporte: ``, medidas: ``,
+    titulo: `Memorias de la ciudad`,
+    autor: `Autor desconocido`,
+    origen: `Adquisición particular`,
+    fecha: `ca. 2000`,
+    periodo: `Arte Siglo XXI`,
+    escuela: `Argentina S.XXI`,
+    tecnica: `Técnica mixta`,
+    objeto: `Pintura`,
+    estilo: `Contemporáneo`,
+    genero: `Paisaje urbano`,
+    soporte: `Sobre tela`,
+    medidas: `100 x 120 cm.`,
   },
+
 };
